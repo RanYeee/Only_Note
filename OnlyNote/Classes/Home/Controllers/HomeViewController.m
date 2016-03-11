@@ -12,6 +12,7 @@
 #import "UIColor+Hex.h"
 #import "CreateNewViewController.h"
 #import "StickCollectionViewFlowLayout.h"
+#import "LoginViewController.h"
 
 static const CGFloat kCellSizeCoef = .8f;
 static const CGFloat kFirstItemTransform = 0.1f;
@@ -67,11 +68,15 @@ static const CGFloat kFirstItemTransform = 0.1f;
 
 - (void)pushToCreateVC
 {
-    CreateNewViewController *createVC = [[CreateNewViewController alloc]init];
+//    CreateNewViewController *createVC = [[CreateNewViewController alloc]init];
+//    
+//    createVC.hidesBottomBarWhenPushed = YES;
+//    
+//    [self.navigationController pushViewController:createVC animated:YES];
     
-    createVC.hidesBottomBarWhenPushed = YES;
+    LoginViewController *loginVC = [[LoginViewController alloc]init];
     
-    [self.navigationController pushViewController:createVC animated:YES];
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
 
 #pragma 列表为空的背景——delegate/datesource
