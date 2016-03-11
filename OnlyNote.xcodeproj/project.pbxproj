@@ -9,12 +9,21 @@
 /* Begin PBXBuildFile section */
 		88DE00EB1C929CF6003AADF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE00EA1C929CF6003AADF7 /* main.m */; };
 		88DE00EE1C929CF6003AADF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE00ED1C929CF6003AADF7 /* AppDelegate.m */; };
-		88DE00F11C929CF6003AADF7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE00F01C929CF6003AADF7 /* ViewController.m */; };
 		88DE00F41C929CF6003AADF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DE00F21C929CF6003AADF7 /* Main.storyboard */; };
 		88DE00F61C929CF6003AADF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88DE00F51C929CF6003AADF7 /* Assets.xcassets */; };
 		88DE00F91C929CF6003AADF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DE00F71C929CF6003AADF7 /* LaunchScreen.storyboard */; };
 		88DE01041C929CF6003AADF7 /* OnlyNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01031C929CF6003AADF7 /* OnlyNoteTests.m */; };
 		88DE010F1C929CF6003AADF7 /* OnlyNoteUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE010E1C929CF6003AADF7 /* OnlyNoteUITests.m */; };
+		88DE012A1C929EF3003AADF7 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01291C929EF3003AADF7 /* HomeViewController.m */; };
+		88DE012D1C929F0D003AADF7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE012C1C929F0D003AADF7 /* DetailViewController.m */; };
+		88DE01301C929F3A003AADF7 /* CreateNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE012F1C929F3A003AADF7 /* CreateNewViewController.m */; };
+		88DE01351C929F54003AADF7 /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01321C929F54003AADF7 /* MyCollectionViewCell.m */; };
+		88DE01361C929F54003AADF7 /* StickCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01341C929F54003AADF7 /* StickCollectionViewFlowLayout.m */; };
+		88DE01391C929F68003AADF7 /* RNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01381C929F68003AADF7 /* RNNavigationController.m */; };
+		88DE013C1C92A0D5003AADF7 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE013B1C92A0D5003AADF7 /* UserViewController.m */; };
+		88DE013F1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE013E1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.m */; };
+		88DE01451C92B146003AADF7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01441C92B146003AADF7 /* UIColor+Hex.m */; };
+		D84CFC5D8C42BABA789EDF9D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 973EE636FA21E1802513AF71 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7628CAA3F5C9732D6BAEC015 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		88DE00E61C929CF6003AADF7 /* OnlyNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlyNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DE00EA1C929CF6003AADF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88DE00EC1C929CF6003AADF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		88DE00ED1C929CF6003AADF7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		88DE00EF1C929CF6003AADF7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		88DE00F01C929CF6003AADF7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		88DE00F31C929CF6003AADF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88DE00F51C929CF6003AADF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88DE00F81C929CF6003AADF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +59,26 @@
 		88DE010A1C929CF6003AADF7 /* OnlyNoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlyNoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DE010E1C929CF6003AADF7 /* OnlyNoteUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnlyNoteUITests.m; sourceTree = "<group>"; };
 		88DE01101C929CF6003AADF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88DE01281C929EF3003AADF7 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		88DE01291C929EF3003AADF7 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		88DE012B1C929F0D003AADF7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		88DE012C1C929F0D003AADF7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		88DE012E1C929F3A003AADF7 /* CreateNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNewViewController.h; sourceTree = "<group>"; };
+		88DE012F1C929F3A003AADF7 /* CreateNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewViewController.m; sourceTree = "<group>"; };
+		88DE01311C929F54003AADF7 /* MyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewCell.h; sourceTree = "<group>"; };
+		88DE01321C929F54003AADF7 /* MyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewCell.m; sourceTree = "<group>"; };
+		88DE01331C929F54003AADF7 /* StickCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		88DE01341C929F54003AADF7 /* StickCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		88DE01371C929F68003AADF7 /* RNNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNavigationController.h; sourceTree = "<group>"; };
+		88DE01381C929F68003AADF7 /* RNNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNavigationController.m; sourceTree = "<group>"; };
+		88DE013A1C92A0D5003AADF7 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		88DE013B1C92A0D5003AADF7 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
+		88DE013D1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+CustomBackButton.h"; sourceTree = "<group>"; };
+		88DE013E1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+CustomBackButton.m"; sourceTree = "<group>"; };
+		88DE01431C92B146003AADF7 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		88DE01441C92B146003AADF7 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		973EE636FA21E1802513AF71 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3C70C264AD1B0374144BD9D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84CFC5D8C42BABA789EDF9D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35524CA987A5BB05FC150599 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				973EE636FA21E1802513AF71 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		88DE00DD1C929CF6003AADF7 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +122,8 @@
 				88DE01021C929CF6003AADF7 /* OnlyNoteTests */,
 				88DE010D1C929CF6003AADF7 /* OnlyNoteUITests */,
 				88DE00E71C929CF6003AADF7 /* Products */,
+				F573D056B54A434558AE7BCC /* Pods */,
+				35524CA987A5BB05FC150599 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +140,12 @@
 		88DE00E81C929CF6003AADF7 /* OnlyNote */ = {
 			isa = PBXGroup;
 			children = (
+				88DE011C1C929EA1003AADF7 /* Categories */,
+				88DE011D1C929EA1003AADF7 /* Classes */,
+				88DE01261C929EA1003AADF7 /* Frameworks */,
+				88DE01271C929EA1003AADF7 /* ThirdPartyLib */,
 				88DE00EC1C929CF6003AADF7 /* AppDelegate.h */,
 				88DE00ED1C929CF6003AADF7 /* AppDelegate.m */,
-				88DE00EF1C929CF6003AADF7 /* ViewController.h */,
-				88DE00F01C929CF6003AADF7 /* ViewController.m */,
 				88DE00F21C929CF6003AADF7 /* Main.storyboard */,
 				88DE00F51C929CF6003AADF7 /* Assets.xcassets */,
 				88DE00F71C929CF6003AADF7 /* LaunchScreen.storyboard */,
@@ -140,6 +181,125 @@
 			path = OnlyNoteUITests;
 			sourceTree = "<group>";
 		};
+		88DE011C1C929EA1003AADF7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				88DE01431C92B146003AADF7 /* UIColor+Hex.h */,
+				88DE01441C92B146003AADF7 /* UIColor+Hex.m */,
+				88DE013D1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.h */,
+				88DE013E1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		88DE011D1C929EA1003AADF7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				88DE011E1C929EA1003AADF7 /* Home */,
+				88DE01221C929EA1003AADF7 /* User */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		88DE011E1C929EA1003AADF7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				88DE011F1C929EA1003AADF7 /* Cell */,
+				88DE01201C929EA1003AADF7 /* Controllers */,
+				88DE01211C929EA1003AADF7 /* Model */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		88DE011F1C929EA1003AADF7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				88DE01311C929F54003AADF7 /* MyCollectionViewCell.h */,
+				88DE01321C929F54003AADF7 /* MyCollectionViewCell.m */,
+				88DE01331C929F54003AADF7 /* StickCollectionViewFlowLayout.h */,
+				88DE01341C929F54003AADF7 /* StickCollectionViewFlowLayout.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		88DE01201C929EA1003AADF7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				88DE01371C929F68003AADF7 /* RNNavigationController.h */,
+				88DE01381C929F68003AADF7 /* RNNavigationController.m */,
+				88DE01281C929EF3003AADF7 /* HomeViewController.h */,
+				88DE01291C929EF3003AADF7 /* HomeViewController.m */,
+				88DE012B1C929F0D003AADF7 /* DetailViewController.h */,
+				88DE012C1C929F0D003AADF7 /* DetailViewController.m */,
+				88DE012E1C929F3A003AADF7 /* CreateNewViewController.h */,
+				88DE012F1C929F3A003AADF7 /* CreateNewViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		88DE01211C929EA1003AADF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		88DE01221C929EA1003AADF7 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				88DE01231C929EA1003AADF7 /* Cell */,
+				88DE01241C929EA1003AADF7 /* Controllers */,
+				88DE01251C929EA1003AADF7 /* Model */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		88DE01231C929EA1003AADF7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		88DE01241C929EA1003AADF7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				88DE013A1C92A0D5003AADF7 /* UserViewController.h */,
+				88DE013B1C92A0D5003AADF7 /* UserViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		88DE01251C929EA1003AADF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		88DE01261C929EA1003AADF7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		88DE01271C929EA1003AADF7 /* ThirdPartyLib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdPartyLib;
+			sourceTree = "<group>";
+		};
+		F573D056B54A434558AE7BCC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7628CAA3F5C9732D6BAEC015 /* Pods.debug.xcconfig */,
+				E3C70C264AD1B0374144BD9D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +307,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88DE01131C929CF6003AADF7 /* Build configuration list for PBXNativeTarget "OnlyNote" */;
 			buildPhases = (
+				9CAB6FD98E3FEC590E1758A9 /* Check Pods Manifest.lock */,
 				88DE00E21C929CF6003AADF7 /* Sources */,
 				88DE00E31C929CF6003AADF7 /* Frameworks */,
 				88DE00E41C929CF6003AADF7 /* Resources */,
+				4E909224EBBD6144F0A8B0CE /* Embed Pods Frameworks */,
+				961A8514CCF89BEF17A52A7F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,14 +428,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4E909224EBBD6144F0A8B0CE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		961A8514CCF89BEF17A52A7F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CAB6FD98E3FEC590E1758A9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		88DE00E21C929CF6003AADF7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88DE00F11C929CF6003AADF7 /* ViewController.m in Sources */,
+				88DE013C1C92A0D5003AADF7 /* UserViewController.m in Sources */,
 				88DE00EE1C929CF6003AADF7 /* AppDelegate.m in Sources */,
 				88DE00EB1C929CF6003AADF7 /* main.m in Sources */,
+				88DE01351C929F54003AADF7 /* MyCollectionViewCell.m in Sources */,
+				88DE013F1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.m in Sources */,
+				88DE012A1C929EF3003AADF7 /* HomeViewController.m in Sources */,
+				88DE01301C929F3A003AADF7 /* CreateNewViewController.m in Sources */,
+				88DE01361C929F54003AADF7 /* StickCollectionViewFlowLayout.m in Sources */,
+				88DE01451C92B146003AADF7 /* UIColor+Hex.m in Sources */,
+				88DE012D1C929F0D003AADF7 /* DetailViewController.m in Sources */,
+				88DE01391C929F68003AADF7 /* RNNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +630,7 @@
 		};
 		88DE01141C929CF6003AADF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7628CAA3F5C9732D6BAEC015 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OnlyNote/Info.plist;
@@ -422,6 +642,7 @@
 		};
 		88DE01151C929CF6003AADF7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3C70C264AD1B0374144BD9D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OnlyNote/Info.plist;
@@ -498,6 +719,7 @@
 				88DE01151C929CF6003AADF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		88DE01161C929CF6003AADF7 /* Build configuration list for PBXNativeTarget "OnlyNoteTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +728,7 @@
 				88DE01181C929CF6003AADF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		88DE01191C929CF6003AADF7 /* Build configuration list for PBXNativeTarget "OnlyNoteUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +737,7 @@
 				88DE011B1C929CF6003AADF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
