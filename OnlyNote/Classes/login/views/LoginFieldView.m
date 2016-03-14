@@ -6,16 +6,18 @@
 //  Copyright © 2016年 IMac. All rights reserved.
 //
 
+NSString *const kHideKeyboardNotification = @"kHideKeyboardNotification";//隐藏键盘
+
 #import "LoginFieldView.h"
 
-@interface LoginFieldView ()
+@interface LoginFieldView ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) UIImageView *iconView;
 
 @end
 @implementation LoginFieldView
 
-- (instancetype)initWithFrame:(CGRect)frame andLeftImage:(UIImage *)image
+- (instancetype)initWithFrame:(CGRect)frame andLeftImage:(UIImage *)image insertString:(EndEditingBlock)block
 {
     self = [super initWithFrame:frame];
     
@@ -23,9 +25,13 @@
         
         self.frame = frame;
         
+        self.endEditingBlock = block;
+        
         self.iconImage = image;
         
         [self setupView];
+        
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyboard) name:kHideKeyboardNotification object:nil];
                 
     }
     
@@ -38,15 +44,27 @@
 {
     CGFloat iconWH = self.frame.size.height;
     
-    UITextField *textfield = [[UITextField alloc]initWithFrame:CGRectMake(self.frame.origin.x + iconWH, self.frame.origin.y, self.frame.size.width - iconWH, self.frame.size.height)];
+    CGRect fieldRect = CGRectMake(self.frame.origin.x + iconWH, self.frame.origin.y, self.frame.size.width - iconWH, self.frame.size.height);
     
-    textfield.textAlignment = NSTextAlignmentCenter;
+    UIView *alphaView = [[UIView alloc]initWithFrame:fieldRect];
     
-    textfield.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    alphaView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-    textfield.alpha = 0.45f;
+    alphaView.alpha = 0.55f;
     
-    [self addSubview:textfield];
+    [self addSubview:alphaView];
+    
+    _textfield = [[UITextField alloc]initWithFrame:fieldRect];
+    
+    _textfield.textAlignment = NSTextAlignmentCenter;
+    
+    _textfield.backgroundColor = [UIColor clearColor];
+    
+    _textfield.borderStyle = UITextBorderStyleNone;
+    
+    _textfield.delegate = self;
+    
+    [self insertSubview:_textfield aboveSubview:alphaView];
     
     
     self.iconView = [[UIImageView alloc]initWithImage:self.iconImage];
@@ -61,7 +79,26 @@
     
 
     
+
+    
 }
 
+-(void)setPlaceHolder:(NSString *)placeHolder
+{
+    _textfield.placeholder = placeHolder;
+}
+
+- (void)hideKeyboard
+{
+    [self.textfield resignFirstResponder];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (self.endEditingBlock) {
+        
+        _endEditingBlock(textField.text);
+    }
+}
 
 @end

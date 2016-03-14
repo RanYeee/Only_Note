@@ -8,8 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kHideKeyboardNotification;
+
+typedef void(^EndEditingBlock)(NSString *insertString);
+
 @interface LoginFieldView : UIView
+
 @property (nonatomic, strong) UIImage *iconImage;
 
-- (instancetype)initWithFrame:(CGRect)frame andLeftImage:(UIImage *)image;
+@property (nonatomic ,strong) NSString *placeHolder;
+
+@property (nonatomic ,strong) UITextField *textfield;
+
+@property (nonatomic ,weak) EndEditingBlock endEditingBlock;
+
+- (instancetype)initWithFrame:(CGRect)frame andLeftImage:(UIImage *)image insertString:(EndEditingBlock)block;
+
 @end

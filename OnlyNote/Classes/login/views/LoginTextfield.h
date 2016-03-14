@@ -10,6 +10,5 @@
 
 @interface LoginTextfield : UITextField
 
-- (instancetype)initWithFrame:(CGRect)frame andLeftImage:(UIImage *)image;
 
 @end

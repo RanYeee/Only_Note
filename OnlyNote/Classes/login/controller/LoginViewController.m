@@ -9,8 +9,16 @@
 #import "LoginViewController.h"
 #import "LoginFieldView.h"
 #import "UIImage+GIF.h"
+#import "DeformationButton.h"
+#import "SignUpViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UITextFieldDelegate>
+
+{
+    NSString *_pwd;
+    
+    NSString *_userName;
+}
 
 @end
 
@@ -35,18 +43,25 @@
 
 - (void)setupView {
     
-    UIImage  *image=[UIImage sd_animatedGIFNamed:@"snowGif"];
+    UIImage  *image=[UIImage imageNamed:@"bgImage.jpg"];
     
     UIImageView  *gifview=[[UIImageView alloc]initWithFrame:self.view.bounds];
+    
+    gifview.userInteractionEnabled = YES;
     
     gifview.image=image;
     
     [self.view addSubview:gifview];
     
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideKeyboard)];
+    
+    [gifview addGestureRecognizer:tapGesture];
     
     UILabel *titleLabel = [[UILabel alloc]init];
     
     titleLabel.text = @"Login";
+    
+    titleLabel.textColor = [UIColor whiteColor];
     
     titleLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:30.0f];
     
@@ -63,9 +78,17 @@
         
     }];
     
+    CGRect fieldRect = CGRectMake(0, 0, self.view.frame.size.width/1.5, 40);
     
-    LoginFieldView *accountField = [[LoginFieldView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/1.5, 40) andLeftImage:[UIImage imageNamed:@"tabbar_me"]];
+    LoginFieldView *accountField = [[LoginFieldView alloc]initWithFrame: fieldRect andLeftImage:[UIImage imageNamed:@"icon_viewer"] insertString:^(NSString *insertString) {
+        
+        NSLog(@">>>>>>%@",insertString);
+        
+        _userName = insertString;
+        
+    }];
     
+    accountField.placeHolder = @"Username";
     
     [self.view addSubview:accountField];
     
@@ -78,7 +101,15 @@
     }];
     
     
-    LoginFieldView *pwdField = [[LoginFieldView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/1.5, 40) andLeftImage:[UIImage imageNamed:@"icon_chatlock_white"]];
+    LoginFieldView *pwdField = [[LoginFieldView alloc]initWithFrame:fieldRect andLeftImage:[UIImage imageNamed:@"icon_chatlock_white"] insertString:^(NSString *insertString) {
+        
+            NSLog(@">>>>>>%@",insertString);
+        
+        _pwd = insertString;
+        
+    }];
+    
+    pwdField.placeHolder = @"Password";
     
     [self.view addSubview:pwdField];
     
@@ -90,9 +121,108 @@
         
     }];
     
+    UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    UIImage *closeImage = [UIImage imageNamed:@"CloseBtn"];
+    
+    [closeBtn setImage:closeImage forState:UIControlStateNormal];
+    
+    [closeBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:closeBtn];
+
+    [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.centerY.equalTo(titleLabel.mas_centerY);
+        make.left.equalTo(self.view).offset(20);
+        make.size.mas_equalTo(CGSizeMake(18, 18));
+        
+    }];
+    
+    
+    DeformationButton *loginBtn = [[DeformationButton alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width/1.5, 40)];
+    
+    [loginBtn setTitle:@"login" forState:UIControlStateNormal];
+        
+    loginBtn.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+    [self.view addSubview:loginBtn];
+    
+    [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.size.mas_equalTo(CGSizeMake(self.view.frame.size.width/1.5, 40));
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(pwdField.mas_bottom).offset(40);
+        
+    }];
+    
+    //sign up
+    UILabel *alertLabel = [[UILabel alloc]init];
+    
+    alertLabel.text = @"No User?";
+    
+    alertLabel.textColor = [UIColor whiteColor];
+    
+    alertLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:WGiveFontSize(15)];
+    
+    alertLabel.textAlignment = NSTextAlignmentRight;
+    
+    [self.view addSubview:alertLabel];
+    
+    [alertLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.size.mas_equalTo(CGSizeMake(loginBtn.frame.size.width/2, 30));
+        make.left.equalTo(loginBtn.mas_left);
+        make.top.equalTo(loginBtn.mas_bottom).offset(30);
+        
+    }];
+    
+    UIButton *signUpBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [signUpBtn setTitle:@"Sign up" forState:UIControlStateNormal];
+    
+    [signUpBtn setTitleColor:[UIColor colorWithRed:0.7176 green:0.2118 blue:0.2667 alpha:1.0] forState:UIControlStateNormal];
+    
+    [signUpBtn setTitleColor:[UIColor colorWithRed:0.6515 green:0.1357 blue:0.2066 alpha:0.533783783783784] forState:UIControlStateHighlighted];
+    
+    signUpBtn.titleLabel.font = [UIFont fontWithName:@"ProximaNova-Semibold" size:WGiveFontSize(14)];
+    
+    [signUpBtn addTarget:self action:@selector(signUp) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:signUpBtn];
+    
+    [signUpBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.size.mas_equalTo(CGSizeMake(WGiveWidth(65), 30));
+        make.left.equalTo(alertLabel.mas_right);
+        make.top.equalTo(alertLabel);
+        
+    }];
 }
 
+- (void)close
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
+#pragma mark 登录处理
+- (void)login
+{
+    
+}
+
+#pragma mark 调到注册页面
+- (void)signUp
+{
+    SignUpViewController *signVC = [[SignUpViewController alloc]init];
+    
+    [self presentViewController:signVC animated:YES completion:nil];
+}
+
+- (void)hideKeyboard
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:kHideKeyboardNotification object:nil];
+}
 
 
 

@@ -38,6 +38,11 @@
 		69F26E2C1C95C173002DA87A /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F26E1C1C95C173002DA87A /* UIView+WebCacheOperation.m */; };
 		69F26E2E1C95C2D6002DA87A /* snowGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 69F26E2D1C95C2D6002DA87A /* snowGif.gif */; };
 		69F26E2F1C95C33E002DA87A /* ProximaNova-Light.otf in Sources */ = {isa = PBXBuildFile; fileRef = 69F26DCC1C95C0B8002DA87A /* ProximaNova-Light.otf */; };
+		889CD0211C9667FA00664F83 /* DeformationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0201C9667FA00664F83 /* DeformationButton.m */; };
+		889CD0241C969BA800664F83 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 889CD0231C969BA800664F83 /* ProximaNova-Semibold.otf */; };
+		889CD0271C96A31500664F83 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0261C96A31500664F83 /* SignUpViewController.m */; };
+		889CD02B1C96AC3800664F83 /* bgImage_blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889CD02A1C96AC3800664F83 /* bgImage_blur.jpg */; };
+		889CD02D1C96B23B00664F83 /* bgImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889CD02C1C96B23B00664F83 /* bgImage.jpg */; };
 		88DE00EB1C929CF6003AADF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE00EA1C929CF6003AADF7 /* main.m */; };
 		88DE00EE1C929CF6003AADF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE00ED1C929CF6003AADF7 /* AppDelegate.m */; };
 		88DE00F41C929CF6003AADF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DE00F21C929CF6003AADF7 /* Main.storyboard */; };
@@ -142,6 +147,14 @@
 		69F26E1C1C95C173002DA87A /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		69F26E2D1C95C2D6002DA87A /* snowGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = snowGif.gif; sourceTree = "<group>"; };
 		7628CAA3F5C9732D6BAEC015 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		889CD01F1C9667FA00664F83 /* DeformationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeformationButton.h; sourceTree = "<group>"; };
+		889CD0201C9667FA00664F83 /* DeformationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeformationButton.m; sourceTree = "<group>"; };
+		889CD0221C968B2500664F83 /* AppMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMacro.h; sourceTree = "<group>"; };
+		889CD0231C969BA800664F83 /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
+		889CD0251C96A31500664F83 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		889CD0261C96A31500664F83 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		889CD02A1C96AC3800664F83 /* bgImage_blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bgImage_blur.jpg; sourceTree = "<group>"; };
+		889CD02C1C96B23B00664F83 /* bgImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bgImage.jpg; sourceTree = "<group>"; };
 		88DE00E61C929CF6003AADF7 /* OnlyNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlyNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DE00EA1C929CF6003AADF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88DE00EC1C929CF6003AADF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -220,6 +233,9 @@
 			isa = PBXGroup;
 			children = (
 				69F26DCC1C95C0B8002DA87A /* ProximaNova-Light.otf */,
+				889CD0231C969BA800664F83 /* ProximaNova-Semibold.otf */,
+				889CD02A1C96AC3800664F83 /* bgImage_blur.jpg */,
+				889CD02C1C96B23B00664F83 /* bgImage.jpg */,
 				69F26E2D1C95C2D6002DA87A /* snowGif.gif */,
 			);
 			path = DataSource;
@@ -353,6 +369,7 @@
 			children = (
 				69F26DFA1C95C10E002DA87A /* PrefixHeader.pch */,
 				88DE00EA1C929CF6003AADF7 /* main.m */,
+				889CD0221C968B2500664F83 /* AppMacro.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -493,6 +510,8 @@
 			children = (
 				88DE014A1C92C427003AADF7 /* LoginViewController.h */,
 				88DE014B1C92C427003AADF7 /* LoginViewController.m */,
+				889CD0251C96A31500664F83 /* SignUpViewController.h */,
+				889CD0261C96A31500664F83 /* SignUpViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -504,6 +523,8 @@
 				88DE014F1C92C49C003AADF7 /* LoginTextfield.m */,
 				69F26DF71C95C0EC002DA87A /* LoginFieldView.h */,
 				69F26DF81C95C0EC002DA87A /* LoginFieldView.m */,
+				889CD01F1C9667FA00664F83 /* DeformationButton.h */,
+				889CD0201C9667FA00664F83 /* DeformationButton.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -587,6 +608,7 @@
 				TargetAttributes = {
 					88DE00E51C929CF6003AADF7 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = U353BQ28K8;
 					};
 					88DE00FE1C929CF6003AADF7 = {
 						CreatedOnToolsVersion = 7.1;
@@ -625,10 +647,13 @@
 			files = (
 				69F26E2E1C95C2D6002DA87A /* snowGif.gif in Resources */,
 				88DE00F91C929CF6003AADF7 /* LaunchScreen.storyboard in Resources */,
+				889CD02D1C96B23B00664F83 /* bgImage.jpg in Resources */,
 				69F26DCD1C95C0B8002DA87A /* ProximaNova-Light.otf in Resources */,
 				88DE00F61C929CF6003AADF7 /* Assets.xcassets in Resources */,
 				69F26DEC1C95C0D1002DA87A /* Info.plist in Resources */,
 				88DE00F41C929CF6003AADF7 /* Main.storyboard in Resources */,
+				889CD02B1C96AC3800664F83 /* bgImage_blur.jpg in Resources */,
+				889CD0241C969BA800664F83 /* ProximaNova-Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,6 +750,7 @@
 				69F26E231C95C173002DA87A /* SDWebImageDownloaderOperation.m in Sources */,
 				69F26DF91C95C0EC002DA87A /* LoginFieldView.m in Sources */,
 				69F26E2A1C95C173002DA87A /* UIImageView+HighlightedWebCache.m in Sources */,
+				889CD0271C96A31500664F83 /* SignUpViewController.m in Sources */,
 				88DE01301C929F3A003AADF7 /* CreateNewViewController.m in Sources */,
 				88DE01361C929F54003AADF7 /* StickCollectionViewFlowLayout.m in Sources */,
 				69F26DF61C95C0D1002DA87A /* ViewController+MASAdditions.m in Sources */,
@@ -737,6 +763,7 @@
 				69F26DED1C95C0D1002DA87A /* MASCompositeConstraint.m in Sources */,
 				88DE01451C92B146003AADF7 /* UIColor+Hex.m in Sources */,
 				88DE012D1C929F0D003AADF7 /* DetailViewController.m in Sources */,
+				889CD0211C9667FA00664F83 /* DeformationButton.m in Sources */,
 				88DE01391C929F68003AADF7 /* RNNavigationController.m in Sources */,
 				69F26E251C95C173002DA87A /* SDWebImagePrefetcher.m in Sources */,
 				69F26E1D1C95C173002DA87A /* MKAnnotationView+WebCache.m in Sources */,
@@ -883,6 +910,7 @@
 			baseConfigurationReference = 7628CAA3F5C9732D6BAEC015 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = OnlyNote/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -896,6 +924,7 @@
 			baseConfigurationReference = E3C70C264AD1B0374144BD9D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = OnlyNote/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
