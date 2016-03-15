@@ -259,7 +259,30 @@
     
 }
 
+- (void)changeRoundFrameForGestureView:(UIView *)view
+{
+    CGRect frame=view.frame;
+    
+    if (frame.origin.x<0) {
+        frame.origin.x=0;
+    }
+    if (frame.origin.x+frame.size.width>SCREEN_WIDTH) {
+        frame.origin.x = SCREEN_WIDTH - frame.size.width;
+    }
+    if (frame.origin.y>BlackViewHeight) {
+        frame.origin.y=BlackViewHeight;
+    }
+    if (CGRectGetMaxX(frame)<SCREEN_WIDTH) {
+        frame.origin.x=frame.origin.x+(SCREEN_WIDTH-CGRectGetMaxX(frame));
+    }
+    if (CGRectGetMaxY(frame)<(SCREEN_HEIGHT-BlackViewHeight)) {
+        frame.origin.y=frame.origin.y+(SCREEN_HEIGHT-BlackViewHeight-CGRectGetMaxY(frame));
+    }
+    [UIView animateWithDuration:0.25 animations:^{
+        view.frame=frame;
+    }];
 
+}
 
 
 @end
