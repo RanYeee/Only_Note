@@ -123,7 +123,7 @@
     
     UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    UIImage *closeImage = [UIImage imageNamed:@"CloseBtn"];
+    UIImage *closeImage = [UIImage imageNamed:@"barbuttonicon_back"];
     
     [closeBtn setImage:closeImage forState:UIControlStateNormal];
     
@@ -135,7 +135,7 @@
        
         make.centerY.equalTo(titleLabel.mas_centerY);
         make.left.equalTo(self.view).offset(20);
-        make.size.mas_equalTo(CGSizeMake(18, 18));
+        make.size.mas_equalTo(CGSizeMake(15, 30));
         
     }];
     
@@ -224,6 +224,9 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:kHideKeyboardNotification object:nil];
 }
 
-
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:kHideKeyboardNotification object:nil];
+}
 
 @end

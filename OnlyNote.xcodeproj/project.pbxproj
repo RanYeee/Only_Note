@@ -43,6 +43,13 @@
 		889CD0271C96A31500664F83 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0261C96A31500664F83 /* SignUpViewController.m */; };
 		889CD02B1C96AC3800664F83 /* bgImage_blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889CD02A1C96AC3800664F83 /* bgImage_blur.jpg */; };
 		889CD02D1C96B23B00664F83 /* bgImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889CD02C1C96B23B00664F83 /* bgImage.jpg */; };
+		889CD02F1C979B3B00664F83 /* signupBg.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 889CD02E1C979B3B00664F83 /* signupBg.JPG */; };
+		889CD0321C979CEB00664F83 /* UIImage+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0311C979CEB00664F83 /* UIImage+Addition.m */; };
+		889CD0331C97AA5D00664F83 /* ProximaNova-Semibold.otf in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0231C969BA800664F83 /* ProximaNova-Semibold.otf */; };
+		889CD0371C97BA5D00664F83 /* UserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0361C97BA5D00664F83 /* UserHeaderView.m */; };
+		889CD03D1C97BFBD00664F83 /* headerImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 889CD03C1C97BFBD00664F83 /* headerImage.jpeg */; };
+		889CD03F1C97E62500664F83 /* userImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889CD03E1C97E62500664F83 /* userImage.jpg */; };
+		88B46EC31C97F09E0074EE4F /* ImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B46EC21C97F09E0074EE4F /* ImageCropViewController.m */; };
 		88DE00EB1C929CF6003AADF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE00EA1C929CF6003AADF7 /* main.m */; };
 		88DE00EE1C929CF6003AADF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE00ED1C929CF6003AADF7 /* AppDelegate.m */; };
 		88DE00F41C929CF6003AADF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DE00F21C929CF6003AADF7 /* Main.storyboard */; };
@@ -155,6 +162,15 @@
 		889CD0261C96A31500664F83 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		889CD02A1C96AC3800664F83 /* bgImage_blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bgImage_blur.jpg; sourceTree = "<group>"; };
 		889CD02C1C96B23B00664F83 /* bgImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bgImage.jpg; sourceTree = "<group>"; };
+		889CD02E1C979B3B00664F83 /* signupBg.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = signupBg.JPG; sourceTree = "<group>"; };
+		889CD0301C979CEB00664F83 /* UIImage+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Addition.h"; sourceTree = "<group>"; };
+		889CD0311C979CEB00664F83 /* UIImage+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Addition.m"; sourceTree = "<group>"; };
+		889CD0351C97BA5D00664F83 /* UserHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHeaderView.h; sourceTree = "<group>"; };
+		889CD0361C97BA5D00664F83 /* UserHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeaderView.m; sourceTree = "<group>"; };
+		889CD03C1C97BFBD00664F83 /* headerImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headerImage.jpeg; sourceTree = "<group>"; };
+		889CD03E1C97E62500664F83 /* userImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = userImage.jpg; sourceTree = "<group>"; };
+		88B46EC11C97F09E0074EE4F /* ImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCropViewController.h; sourceTree = "<group>"; };
+		88B46EC21C97F09E0074EE4F /* ImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCropViewController.m; sourceTree = "<group>"; };
 		88DE00E61C929CF6003AADF7 /* OnlyNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlyNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DE00EA1C929CF6003AADF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88DE00EC1C929CF6003AADF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -232,11 +248,14 @@
 		69F26DCB1C95C0B8002DA87A /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				889CD03E1C97E62500664F83 /* userImage.jpg */,
+				889CD03C1C97BFBD00664F83 /* headerImage.jpeg */,
 				69F26DCC1C95C0B8002DA87A /* ProximaNova-Light.otf */,
 				889CD0231C969BA800664F83 /* ProximaNova-Semibold.otf */,
 				889CD02A1C96AC3800664F83 /* bgImage_blur.jpg */,
 				889CD02C1C96B23B00664F83 /* bgImage.jpg */,
 				69F26E2D1C95C2D6002DA87A /* snowGif.gif */,
+				889CD02E1C979B3B00664F83 /* signupBg.JPG */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -323,6 +342,15 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		889CD0341C97BA4600664F83 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				889CD0351C97BA5D00664F83 /* UserHeaderView.h */,
+				889CD0361C97BA5D00664F83 /* UserHeaderView.m */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		88DE00DD1C929CF6003AADF7 = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +427,8 @@
 				88DE01441C92B146003AADF7 /* UIColor+Hex.m */,
 				88DE013D1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.h */,
 				88DE013E1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.m */,
+				889CD0301C979CEB00664F83 /* UIImage+Addition.h */,
+				889CD0311C979CEB00664F83 /* UIImage+Addition.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -459,6 +489,7 @@
 		88DE01221C929EA1003AADF7 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				889CD0341C97BA4600664F83 /* views */,
 				88DE01231C929EA1003AADF7 /* Cell */,
 				88DE01241C929EA1003AADF7 /* Controllers */,
 				88DE01251C929EA1003AADF7 /* Model */,
@@ -478,6 +509,8 @@
 			children = (
 				88DE013A1C92A0D5003AADF7 /* UserViewController.h */,
 				88DE013B1C92A0D5003AADF7 /* UserViewController.m */,
+				88B46EC11C97F09E0074EE4F /* ImageCropViewController.h */,
+				88B46EC21C97F09E0074EE4F /* ImageCropViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -653,6 +686,9 @@
 				69F26DEC1C95C0D1002DA87A /* Info.plist in Resources */,
 				88DE00F41C929CF6003AADF7 /* Main.storyboard in Resources */,
 				889CD02B1C96AC3800664F83 /* bgImage_blur.jpg in Resources */,
+				889CD02F1C979B3B00664F83 /* signupBg.JPG in Resources */,
+				889CD03D1C97BFBD00664F83 /* headerImage.jpeg in Resources */,
+				889CD03F1C97E62500664F83 /* userImage.jpg in Resources */,
 				889CD0241C969BA800664F83 /* ProximaNova-Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,7 +762,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889CD0331C97AA5D00664F83 /* ProximaNova-Semibold.otf in Sources */,
 				69F26E2F1C95C33E002DA87A /* ProximaNova-Light.otf in Sources */,
+				889CD0371C97BA5D00664F83 /* UserHeaderView.m in Sources */,
 				88DE013C1C92A0D5003AADF7 /* UserViewController.m in Sources */,
 				69F26E261C95C173002DA87A /* UIButton+WebCache.m in Sources */,
 				69F26E241C95C173002DA87A /* SDWebImageManager.m in Sources */,
@@ -738,11 +776,13 @@
 				69F26E201C95C173002DA87A /* SDWebImageCompat.m in Sources */,
 				88DE01351C929F54003AADF7 /* MyCollectionViewCell.m in Sources */,
 				69F26DF51C95C0D1002DA87A /* View+MASAdditions.m in Sources */,
+				88B46EC31C97F09E0074EE4F /* ImageCropViewController.m in Sources */,
 				88DE013F1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.m in Sources */,
 				69F26E2C1C95C173002DA87A /* UIView+WebCacheOperation.m in Sources */,
 				69F26DF11C95C0D1002DA87A /* MASViewAttribute.m in Sources */,
 				69F26DEF1C95C0D1002DA87A /* MASConstraintMaker.m in Sources */,
 				69F26E2B1C95C173002DA87A /* UIImageView+WebCache.m in Sources */,
+				889CD0321C979CEB00664F83 /* UIImage+Addition.m in Sources */,
 				69F26E291C95C173002DA87A /* UIImage+WebP.m in Sources */,
 				69F26E1F1C95C173002DA87A /* SDImageCache.m in Sources */,
 				88DE012A1C929EF3003AADF7 /* HomeViewController.m in Sources */,

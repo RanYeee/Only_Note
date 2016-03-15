@@ -8,6 +8,7 @@
 
 #import "LoginTextfield.h"
 
+NSString *const kResignFirstResponderNotification = @"kResignFirstResponderNotification";
 
 @implementation LoginTextfield
 
@@ -19,7 +20,12 @@
         
         self.borderStyle = UITextBorderStyleNone;
         
-        self.textAlignment = NSTextAlignmentCenter;
+        self.textColor = [UIColor whiteColor];
+        
+        self.font = [UIFont fontWithName:@"ProximaNova-Light" size:17];
+        
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyboard) name:kResignFirstResponderNotification object:nil];
+        
     }
     
     return self;
@@ -32,24 +38,45 @@
     CGContextFillRect(context, CGRectMake(0, CGRectGetHeight(self.frame) - 0.5, CGRectGetWidth(self.frame), 0.5));
 }
 
-//控制placeHolder的颜色、字体
 - (void)drawPlaceholderInRect:(CGRect)rect
 {
-    //CGContextRef context = UIGraphicsGetCurrentContext();
-    //CGContextSetFillColorWithColor(context, [UIColor yellowColor].CGColor);
-    [[UIColor groupTableViewBackgroundColor] setFill];
-//    
-//    [self.placeholder drawInRect:<#(CGRect)#> withAttributes:<#(nullable NSDictionary<NSString *,id> *)#>];
+    // 设置富文本属性
+    NSMutableDictionary *dictM = [NSMutableDictionary dictionary];
+    dictM[NSFontAttributeName] = self.font;
+    dictM[NSForegroundColorAttributeName] = [UIColor groupTableViewBackgroundColor];
+    CGPoint point = CGPointMake(10, (rect.size.height - self.font.lineHeight) * 0.5);
+    
+    [self.placeholder drawAtPoint:point withAttributes:dictM];
+    
 }
 
-
-- (NSAttributedString *)attributedStringWithString:(NSString *)string color:(UIColor *)color font:(UIFont *)font {
+//控制编辑文本的位置
+-(CGRect)editingRectForBounds:(CGRect)bounds
+{
+    //return CGRectInset( bounds, 10 , 0 );
     
-    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
-    attrs[NSForegroundColorAttributeName] = color;
-    attrs[NSFontAttributeName] = font;
-    NSAttributedString *attributedStr = [[NSAttributedString alloc] initWithString:string attributes:attrs];
-    return attributedStr;
+    CGRect inset = CGRectMake(bounds.origin.x +15, bounds.origin.y, bounds.size.width -10, bounds.size.height);
+    
+    return inset;
+}
+
+//控制显示文本的位置
+-(CGRect)textRectForBounds:(CGRect)bounds
+{
+    //return CGRectInset(bounds, 50, 0);
+    
+    
+
+    CGRect inset = CGRectMake(bounds.origin.x+10, bounds.origin.y, bounds.size.width-10, bounds.size.height);
+
+    
+    return inset;
+    
+}
+
+- (void)hideKeyboard
+{
+    [self resignFirstResponder];
 }
 
 @end

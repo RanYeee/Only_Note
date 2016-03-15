@@ -5,6 +5,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>ProximaNova-Light.otf</string>
+		<string>ProximaNova-Semibold.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

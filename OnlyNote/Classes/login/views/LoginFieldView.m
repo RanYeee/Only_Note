@@ -50,7 +50,7 @@ NSString *const kHideKeyboardNotification = @"kHideKeyboardNotification";//ÈöêËó
     
     alphaView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-    alphaView.alpha = 0.55f;
+    alphaView.alpha = 0.75f;
     
     [self addSubview:alphaView];
     
