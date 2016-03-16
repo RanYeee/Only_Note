@@ -2,18 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "placeholder_vesper.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "placeholder_vesper@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "email_sended@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "placeholder_vesper@3x.png"
+      "filename" : "email_sended@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

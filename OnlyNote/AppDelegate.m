@@ -16,9 +16,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [Bmob registerWithAppKey:@"a8fae748496362a9069f536d084750d6"];
+
     [self changeNav];
+    
     return YES;
+    
 }
 - (void)changeNav
 {

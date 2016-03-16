@@ -31,4 +31,7 @@
 
 -(void)resetBgImage:(UIImage *)image;
 
+-(void)resetIconImage:(UIImage *)image;
+
+
 @end

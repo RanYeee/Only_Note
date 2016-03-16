@@ -16,4 +16,5 @@
 
 
 #import "Masonry.h"
+#import <BmobSDK/Bmob.h>
 #import "AppMacro.h"

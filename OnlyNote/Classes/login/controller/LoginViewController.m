@@ -11,6 +11,7 @@
 #import "UIImage+GIF.h"
 #import "DeformationButton.h"
 #import "SignUpViewController.h"
+#import "RNNavigationController.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -216,7 +217,11 @@
 {
     SignUpViewController *signVC = [[SignUpViewController alloc]init];
     
-    [self presentViewController:signVC animated:YES completion:nil];
+    RNNavigationController *nav = [[RNNavigationController alloc]initWithRootViewController:signVC];
+    
+    nav.navigationBar.hidden = YES;
+    
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)hideKeyboard

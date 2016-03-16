@@ -33,7 +33,6 @@
     [self.view addSubview:_headerView];
     
     _headerView.delegate = self;
-    
 
   
 }
@@ -70,11 +69,13 @@
 
 #pragma mark - CDPImageCropDelegate
 //确定
--(void)confirmClickWithImage:(UIImage *)image{
+-(void)confirmClickWithBgImage:(UIImage *)bgImage andIconImage:(UIImage *)iconImage{
     
     [self dismissViewControllerAnimated:YES completion:nil];
     //显示裁剪后的图片
-    [_headerView resetBgImage:image];
+    [_headerView resetBgImage:bgImage];
+    
+    [_headerView resetIconImage:iconImage];
     
 }
 //返回

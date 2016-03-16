@@ -62,8 +62,16 @@
     
     _iconImageV.contentMode = UIViewContentModeScaleAspectFill;
     
-    self.userImage = [self circleImage:self.userImage withParam:0];
+//    self.userImage = [self circleImage:self.userImage withParam:0];
     
+    _iconImageV.clipsToBounds = YES;
+    
+    _iconImageV.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    _iconImageV.layer.borderWidth = 2.0f;
+    
+    _iconImageV.layer.cornerRadius = iconH/2;
+//
     _iconImageV.image = self.userImage;
     
     _iconImageV.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2-10);
@@ -106,7 +114,7 @@
     
     CGContextRef context =UIGraphicsGetCurrentContext();
     
-    //圆的边框宽度为2，颜色为红色
+    //圆的边框宽度为2，颜色为白色
     
     CGContextSetLineWidth(context,10);
     
@@ -168,4 +176,13 @@
     _bgImageView.image = resetImage;
 
 }
+
+-(void)resetIconImage:(UIImage *)image
+{
+//    UIImage *resetImage = [self circleImage:image withParam:0];
+    
+    _iconImageV.image = image;
+}
+
+
 @end

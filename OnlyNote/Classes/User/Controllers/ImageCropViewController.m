@@ -5,7 +5,8 @@
 //  Created by IMac on 16/3/15.
 //  Copyright © 2016年 IMac. All rights reserved.
 //
-#define BlackViewHeight (SCREEN_HEIGHT/2-(SCREEN_WIDTH/16*9)/2)
+#define CropImageHeight SCREEN_WIDTH/16*9
+#define BlackViewHeight (SCREEN_HEIGHT/2-CropImageHeight/2)
 
 #import "ImageCropViewController.h"
 
@@ -13,6 +14,12 @@
 {
     UIImageView *_imageView;
     CGRect _oldImageViewFrame;
+    
+    UIView *_roundView;
+    
+    CGRect _roundRect;
+    
+    UIImage *_originalImage;
 }
 
 @end
@@ -28,6 +35,9 @@
 //初始化
 -(instancetype)initWithImage:(UIImage *)image{
     if (self=[super init]) {
+        
+        _originalImage = image;
+        
         _imageView=[[UIImageView alloc] initWithImage:image];
         
         [self createUI];
@@ -71,22 +81,24 @@
         }
     }
     _imageView.center=[UIApplication sharedApplication].delegate.window.center;
+    
     _oldImageViewFrame=_imageView.frame;
     
     [self.view addSubview:_imageView];
     
-    UIView *roundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/4, SCREEN_WIDTH/4)];
-    roundView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.687605574324324];
-    roundView.alpha = 0.3;
-    roundView.layer.borderWidth = 1.0;
-    roundView.layer.borderColor = [[UIColor whiteColor]CGColor];
-    roundView.layer.cornerRadius = roundView.frame.size.height/2;
-    roundView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2-10);
-    [self.view addSubview:roundView];
+    _roundRect = CGRectMake(0, 0, SCREEN_WIDTH/3, SCREEN_WIDTH/3);
+    _roundView = [[UIView alloc]initWithFrame:_roundRect];
+    _roundView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.687605574324324];
+    _roundView.alpha = 0.3;
+    _roundView.layer.borderWidth = 2.0;
+    _roundView.layer.borderColor = [[UIColor whiteColor]CGColor];
+    _roundView.layer.cornerRadius = _roundView.frame.size.height/2;
+    _roundView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2-10);
+    [self.view addSubview:_roundView];
     //拖动
     UIPanGestureRecognizer *pan=[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRoundView:)];
-    [roundView addGestureRecognizer:pan];
-    
+    [_roundView addGestureRecognizer:pan];
+
     
     UIView *topView=[[UIView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,BlackViewHeight)];
     topView.backgroundColor=[UIColor blackColor];
@@ -112,8 +124,13 @@
     [_imageView addGestureRecognizer:panGR];
     
     //缩放
-    UIPinchGestureRecognizer *pinchGR=[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchImageView:)];
-    [_imageView addGestureRecognizer:pinchGR];
+    UIPinchGestureRecognizer *imageV_pinchGR=[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchImageView:)];
+    
+    UIPinchGestureRecognizer *round_pinchGR=[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchRoundView:)];
+    
+    [_imageView addGestureRecognizer:imageV_pinchGR];
+    
+    [_roundView addGestureRecognizer:round_pinchGR];
 }
 //创建导航栏
 -(void)createTopBar{
@@ -148,13 +165,15 @@
 }
 //确定
 -(void)confirmClick{
-    UIImage *image=[self getImageFromImageView:_imageView withRect:CGRectMake(0,BlackViewHeight,SCREEN_WIDTH,SCREEN_HEIGHT-BlackViewHeight*2)];
-    //保存到本地相册
-    UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
     
+    UIImage *bgImage=[self getImageFromImageView:_imageView withRect:CGRectMake(0,BlackViewHeight,SCREEN_WIDTH,CropImageHeight)];
+    NSLog(@">>>>>>_roundRect = %@",NSStringFromCGRect(_roundRect));
+    
+    UIImage *iconImage = [self getImageFromImageView:_imageView withRect:_roundRect];
+
     if (_delegate) {
-        if ([_delegate respondsToSelector:@selector(confirmClickWithImage:)]) {
-            [_delegate confirmClickWithImage:image];
+        if ([_delegate respondsToSelector:@selector(confirmClickWithBgImage:andIconImage:)]) {
+            [_delegate confirmClickWithBgImage:bgImage andIconImage:iconImage];
         }
         else{
             NSLog(@"CDPImageCropDelegate的confirmClickWithImage:方法未设置");
@@ -215,7 +234,7 @@
     [panGR setTranslation:CGPointZero inView:self.view];
     
     if (panGR.state==UIGestureRecognizerStateEnded) {
-        [self changeFrameForGestureView:panGR.view];
+        [self changeRoundFrameForGestureView:panGR.view];
     }
 
 }
@@ -224,8 +243,21 @@
     pinchGR.view.transform = CGAffineTransformScale(pinchGR.view.transform,pinchGR.scale,pinchGR.scale);
     pinchGR.scale = 1;
     
+    if (pinchGR.view.class == [UIImageView class]) {
+        
+        if (pinchGR.state == UIGestureRecognizerStateBegan) {
+            //当缩放手势开始时候禁止圆圈拖动
+            _roundView.hidden = YES;
+        }else if (pinchGR.state==UIGestureRecognizerStateEnded){
+            _roundView.hidden = NO;
+
+        }
+
+    }
+    
     if (pinchGR.state==UIGestureRecognizerStateEnded) {
-        if (pinchGR.view.transform.a<1||pinchGR.view.transform.d<1) {
+        
+        if ((pinchGR.view.transform.a<1||pinchGR.view.transform.d<1)) {
             [UIView animateWithDuration:0.25 animations:^{
                 pinchGR.view.transform=CGAffineTransformIdentity;
                 pinchGR.view.frame=_oldImageViewFrame;
@@ -237,6 +269,29 @@
         }
     }
 }
+
+-(void)pinchRoundView:(UIPinchGestureRecognizer *)pinchGR{
+    
+    pinchGR.view.transform = CGAffineTransformScale(pinchGR.view.transform,pinchGR.scale,pinchGR.scale);
+    pinchGR.scale = 1.0;
+    if (pinchGR.state==UIGestureRecognizerStateEnded) {
+        
+        if (pinchGR.view.transform.a<1||pinchGR.view.transform.d<1) {
+            [UIView animateWithDuration:0.25 animations:^{
+                pinchGR.view.transform=CGAffineTransformIdentity;
+                pinchGR.view.frame=_oldImageViewFrame;
+                pinchGR.view.center=[UIApplication sharedApplication].delegate.window.center;
+            }];
+        }
+
+        else{
+            [self changeFrameForGestureView:pinchGR.view];
+        }
+    }
+
+}
+
+
 //调整手势view的frame
 -(void)changeFrameForGestureView:(UIView *)view{
     CGRect frame=view.frame;
@@ -253,8 +308,14 @@
     if (CGRectGetMaxY(frame)<(SCREEN_HEIGHT-BlackViewHeight)) {
         frame.origin.y=frame.origin.y+(SCREEN_HEIGHT-BlackViewHeight-CGRectGetMaxY(frame));
     }
+    
+    
     [UIView animateWithDuration:0.25 animations:^{
+        
         view.frame=frame;
+
+    } completion:^(BOOL finished) {
+        
     }];
     
 }
@@ -266,23 +327,55 @@
     if (frame.origin.x<0) {
         frame.origin.x=0;
     }
+    
     if (frame.origin.x+frame.size.width>SCREEN_WIDTH) {
         frame.origin.x = SCREEN_WIDTH - frame.size.width;
     }
-    if (frame.origin.y>BlackViewHeight) {
+    
+    if (frame.origin.y< BlackViewHeight) {
         frame.origin.y=BlackViewHeight;
     }
-    if (CGRectGetMaxX(frame)<SCREEN_WIDTH) {
-        frame.origin.x=frame.origin.x+(SCREEN_WIDTH-CGRectGetMaxX(frame));
+    
+    if (frame.origin.y+frame.size.height>(CropImageHeight+BlackViewHeight)) {
+        frame.origin.y=CropImageHeight+BlackViewHeight - frame.size.height;
     }
-    if (CGRectGetMaxY(frame)<(SCREEN_HEIGHT-BlackViewHeight)) {
-        frame.origin.y=frame.origin.y+(SCREEN_HEIGHT-BlackViewHeight-CGRectGetMaxY(frame));
-    }
+    
+    
     [UIView animateWithDuration:0.25 animations:^{
+        
         view.frame=frame;
+        
+    } completion:^(BOOL finished) {
+        
+        _roundRect = frame;
+        
     }];
-
 }
 
+
+
+- (UIImage*)ClipImageWithRect:(CGRect)Rect WithImageView:(UIImageView*)imageView{
+    
+    CGRect subRect=[self.view convertRect:Rect toView:imageView];
+
+    //开启位图上下文
+    UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, NO, 0);
+    //创建大小等于剪切区域大小的封闭路径
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:subRect];
+    //设置超出的内容不显示，
+    [path addClip];
+    //获取绘图上下文
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    //将图片渲染的上下文中
+    [imageView.layer renderInContext:context];
+    //获取上下文中的图片
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    //关闭位图上下文
+    UIGraphicsEndImageContext();
+    
+    //返回image
+    
+    return image;
+}
 
 @end

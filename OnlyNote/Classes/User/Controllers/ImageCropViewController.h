@@ -13,7 +13,7 @@
 @optional
 
 //确定(自动将裁剪的图片存入相册)
--(void)confirmClickWithImage:(UIImage *)image;
+-(void)confirmClickWithBgImage:(UIImage *)bgImage andIconImage:(UIImage *)iconImage;
 
 //返回
 -(void)backClick;

@@ -6,12 +6,13 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "momentLuckymoneyTipsClose@2x.png",
+      "filename" : "LoginClose@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "LoginClose@3x.png"
     }
   ],
   "info" : {

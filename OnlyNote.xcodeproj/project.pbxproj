@@ -50,6 +50,7 @@
 		889CD03D1C97BFBD00664F83 /* headerImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 889CD03C1C97BFBD00664F83 /* headerImage.jpeg */; };
 		889CD03F1C97E62500664F83 /* userImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889CD03E1C97E62500664F83 /* userImage.jpg */; };
 		88B46EC31C97F09E0074EE4F /* ImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B46EC21C97F09E0074EE4F /* ImageCropViewController.m */; };
+		88B46ECA1C994E0E0074EE4F /* EmailCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B46EC91C994E0E0074EE4F /* EmailCheckViewController.m */; };
 		88DE00EB1C929CF6003AADF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE00EA1C929CF6003AADF7 /* main.m */; };
 		88DE00EE1C929CF6003AADF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE00ED1C929CF6003AADF7 /* AppDelegate.m */; };
 		88DE00F41C929CF6003AADF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DE00F21C929CF6003AADF7 /* Main.storyboard */; };
@@ -171,6 +172,8 @@
 		889CD03E1C97E62500664F83 /* userImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = userImage.jpg; sourceTree = "<group>"; };
 		88B46EC11C97F09E0074EE4F /* ImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCropViewController.h; sourceTree = "<group>"; };
 		88B46EC21C97F09E0074EE4F /* ImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCropViewController.m; sourceTree = "<group>"; };
+		88B46EC81C994E0E0074EE4F /* EmailCheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailCheckViewController.h; sourceTree = "<group>"; };
+		88B46EC91C994E0E0074EE4F /* EmailCheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailCheckViewController.m; sourceTree = "<group>"; };
 		88DE00E61C929CF6003AADF7 /* OnlyNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlyNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DE00EA1C929CF6003AADF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88DE00EC1C929CF6003AADF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 				88DE014B1C92C427003AADF7 /* LoginViewController.m */,
 				889CD0251C96A31500664F83 /* SignUpViewController.h */,
 				889CD0261C96A31500664F83 /* SignUpViewController.m */,
+				88B46EC81C994E0E0074EE4F /* EmailCheckViewController.h */,
+				88B46EC91C994E0E0074EE4F /* EmailCheckViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -772,6 +777,7 @@
 				69F26DF41C95C0D1002DA87A /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				88DE00EB1C929CF6003AADF7 /* main.m in Sources */,
 				69F26E221C95C173002DA87A /* SDWebImageDownloader.m in Sources */,
+				88B46ECA1C994E0E0074EE4F /* EmailCheckViewController.m in Sources */,
 				69F26DF21C95C0D1002DA87A /* MASViewConstraint.m in Sources */,
 				69F26E201C95C173002DA87A /* SDWebImageCompat.m in Sources */,
 				88DE01351C929F54003AADF7 /* MyCollectionViewCell.m in Sources */,

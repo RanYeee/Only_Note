@@ -9,9 +9,14 @@
 #import "SignUpViewController.h"
 #import "LoginTextfield.h"
 #import "UIImage+Addition.h"
+#import "EmailCheckViewController.h"
 
 @interface SignUpViewController ()<UITextFieldDelegate>
-
+{
+    NSString *_userName;
+    NSString *_email;
+    NSString *_password;
+}
 @end
 
 @implementation SignUpViewController
@@ -124,9 +129,86 @@
     }];
 }
 
+#pragma mark textfield Delegate
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    switch (textField.tag) {
+        case 0:
+            _userName = textField.text;
+            
+            break;
+        case 1:
+            
+            _email = textField.text;
+            break;
+        case 2:
+            
+            _password = textField.text;
+            break;
+        default:
+            break;
+    }
+    
+}
+
+
+#pragma mark 点击事件
 -(void)createAccount
 {
+    EmailCheckViewController *checkVC = [[EmailCheckViewController alloc]init];
     
+    [self.navigationController pushViewController:checkVC animated:YES];
+    
+//    UILabel *alertLabel;
+//    
+//    [alertLabel removeFromSuperview];
+//    
+//    if ([self isEmpty:_email] || [self isEmpty:_userName] || [self isEmpty:_password]) {
+//        
+//        alertLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT*0.8, SCREEN_WIDTH, 30)];
+//        alertLabel.hidden = NO;
+//        alertLabel.text = @"Please fill in the form";
+//        alertLabel.textAlignment = NSTextAlignmentCenter;
+//        alertLabel.textColor = [UIColor colorWithRed:0.9939 green:0.2214 blue:0.2281 alpha:1.0];
+//        alertLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:15];
+//        [self.view addSubview:alertLabel];
+//        
+//        
+//        
+//    }else{
+//        
+//        alertLabel.hidden = YES;
+//        
+//        //请求注册
+//
+//        BmobUser *bUser = [[BmobUser alloc] init];
+//        [bUser setUsername:_userName];
+//        [bUser setPassword:_password];
+//
+//        [bUser signUpInBackgroundWithBlock:^ (BOOL isSuccessful, NSError *error){
+//            if (isSuccessful){
+//               NSLog(@">>>>>>success sign up");
+//                //发送验证邮件
+//                [bUser verifyEmailInBackgroundWithEmailAddress:_email];
+//                //跳转到验证邮箱页面
+//                
+//                
+//            } else {
+//                
+//                NSLog(@"%@",error);
+//                
+//                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warning" message:error.userInfo[@"error"] preferredStyle:UIAlertControllerStyleAlert];
+//     
+//                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+//                [alertController addAction:cancelAction];
+//                
+//                [self presentViewController:alertController animated:YES completion:nil];
+//        
+//            }
+//        }];
+//    }
+//    
 }
 
 - (void)back
@@ -137,6 +219,18 @@
 - (void)hideKeyboard
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:kResignFirstResponderNotification object:nil];
+}
+
+-(BOOL)isEmpty:(NSString *)str
+{
+    if ([str isEqualToString:@""]) {
+        
+        return YES;
+        
+    }else{
+        
+        return NO;
+    }
 }
 
 -(void)dealloc
