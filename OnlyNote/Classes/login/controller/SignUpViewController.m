@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blackColor];
     
     UIImage *bgImage =  [UIImage boxblurImage:[UIImage imageNamed:@"signupBg.JPG"] withBlurNumber:0.9f];
     
@@ -32,7 +32,7 @@
     
     bgImageV.userInteractionEnabled = YES;
     
-    bgImageV.contentMode = UIViewContentModeScaleAspectFill;
+    bgImageV.contentMode = UIViewContentModeScaleAspectFit;
     
     bgImageV.frame = self.view.bounds;
     
@@ -156,59 +156,57 @@
 #pragma mark 点击事件
 -(void)createAccount
 {
-    EmailCheckViewController *checkVC = [[EmailCheckViewController alloc]init];
     
-    [self.navigationController pushViewController:checkVC animated:YES];
+
     
-//    UILabel *alertLabel;
-//    
-//    [alertLabel removeFromSuperview];
-//    
-//    if ([self isEmpty:_email] || [self isEmpty:_userName] || [self isEmpty:_password]) {
-//        
-//        alertLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT*0.8, SCREEN_WIDTH, 30)];
-//        alertLabel.hidden = NO;
-//        alertLabel.text = @"Please fill in the form";
-//        alertLabel.textAlignment = NSTextAlignmentCenter;
-//        alertLabel.textColor = [UIColor colorWithRed:0.9939 green:0.2214 blue:0.2281 alpha:1.0];
-//        alertLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:15];
-//        [self.view addSubview:alertLabel];
-//        
-//        
-//        
-//    }else{
-//        
-//        alertLabel.hidden = YES;
-//        
-//        //请求注册
-//
-//        BmobUser *bUser = [[BmobUser alloc] init];
-//        [bUser setUsername:_userName];
-//        [bUser setPassword:_password];
-//
-//        [bUser signUpInBackgroundWithBlock:^ (BOOL isSuccessful, NSError *error){
-//            if (isSuccessful){
-//               NSLog(@">>>>>>success sign up");
-//                //发送验证邮件
-//                [bUser verifyEmailInBackgroundWithEmailAddress:_email];
-//                //跳转到验证邮箱页面
-//                
-//                
-//            } else {
-//                
-//                NSLog(@"%@",error);
-//                
-//                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warning" message:error.userInfo[@"error"] preferredStyle:UIAlertControllerStyleAlert];
-//     
-//                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-//                [alertController addAction:cancelAction];
-//                
-//                [self presentViewController:alertController animated:YES completion:nil];
-//        
-//            }
-//        }];
-//    }
-//    
+    if ([self isEmpty:_email]) {
+        
+        [SVProgressHUD showErrorWithStatus:@"Please fill in email"];
+        
+    }else{
+        
+        [SVProgressHUD showWithStatus:@"Loding" maskType:SVProgressHUDMaskTypeNone];
+
+        //请求注册
+
+        BmobUser *bUser = [[BmobUser alloc] init];
+        [bUser setUsername:_userName];
+        [bUser setPassword:_password];
+        [bUser setEmail:_email];
+        [bUser signUpInBackgroundWithBlock:^ (BOOL isSuccessful, NSError *error){
+            if (isSuccessful){
+               NSLog(@">>>>>>success sign up");
+                
+                [SVProgressHUD dismiss];
+                
+                //登录
+                [BmobUser loginWithUsernameInBackground:_userName
+                                               password:_password
+                                                  block:^(BmobUser *user, NSError *error) {
+                                                      
+                                                      if (user) {
+                                                          //跳转验证页面
+                                                          EmailCheckViewController *checkVC = [[EmailCheckViewController alloc]initWithEmail:_email andUser:user];
+                                                          
+                                                          [self.navigationController pushViewController:checkVC animated:YES];
+
+                                                      }else{
+                                                          
+                                                          [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+                                                      }
+                                                      
+                                                  }];
+
+                
+                
+            } else {
+                
+                [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+        
+            }
+        }];
+    }
+    
 }
 
 - (void)back
@@ -219,6 +217,8 @@
 - (void)hideKeyboard
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:kResignFirstResponderNotification object:nil];
+    
+    [SVProgressHUD dismiss];
 }
 
 -(BOOL)isEmpty:(NSString *)str

@@ -47,8 +47,9 @@
 		889CD0321C979CEB00664F83 /* UIImage+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0311C979CEB00664F83 /* UIImage+Addition.m */; };
 		889CD0331C97AA5D00664F83 /* ProximaNova-Semibold.otf in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0231C969BA800664F83 /* ProximaNova-Semibold.otf */; };
 		889CD0371C97BA5D00664F83 /* UserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0361C97BA5D00664F83 /* UserHeaderView.m */; };
-		889CD03D1C97BFBD00664F83 /* headerImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 889CD03C1C97BFBD00664F83 /* headerImage.jpeg */; };
-		889CD03F1C97E62500664F83 /* userImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889CD03E1C97E62500664F83 /* userImage.jpg */; };
+		88A205AD1C9A9A60009EEFB6 /* NoteTabelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A205AC1C9A9A60009EEFB6 /* NoteTabelModel.m */; };
+		88A205B01C9AA5D9009EEFB6 /* DefaultUserBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A205AE1C9AA5D9009EEFB6 /* DefaultUserBackground.png */; };
+		88A205B11C9AA5D9009EEFB6 /* DefaultUserIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A205AF1C9AA5D9009EEFB6 /* DefaultUserIcon.png */; };
 		88B46EC31C97F09E0074EE4F /* ImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B46EC21C97F09E0074EE4F /* ImageCropViewController.m */; };
 		88B46ECA1C994E0E0074EE4F /* EmailCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B46EC91C994E0E0074EE4F /* EmailCheckViewController.m */; };
 		88DE00EB1C929CF6003AADF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE00EA1C929CF6003AADF7 /* main.m */; };
@@ -168,8 +169,11 @@
 		889CD0311C979CEB00664F83 /* UIImage+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Addition.m"; sourceTree = "<group>"; };
 		889CD0351C97BA5D00664F83 /* UserHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHeaderView.h; sourceTree = "<group>"; };
 		889CD0361C97BA5D00664F83 /* UserHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeaderView.m; sourceTree = "<group>"; };
-		889CD03C1C97BFBD00664F83 /* headerImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headerImage.jpeg; sourceTree = "<group>"; };
-		889CD03E1C97E62500664F83 /* userImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = userImage.jpg; sourceTree = "<group>"; };
+		88A205A41C9A8DFB009EEFB6 /* PullToRefreshDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PullToRefreshDemo-Bridging-Header.h"; path = "ThirdPartyLib/BreakOutToRefresh/PullToRefreshDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		88A205AB1C9A9A60009EEFB6 /* NoteTabelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTabelModel.h; sourceTree = "<group>"; };
+		88A205AC1C9A9A60009EEFB6 /* NoteTabelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTabelModel.m; sourceTree = "<group>"; };
+		88A205AE1C9AA5D9009EEFB6 /* DefaultUserBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultUserBackground.png; sourceTree = "<group>"; };
+		88A205AF1C9AA5D9009EEFB6 /* DefaultUserIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultUserIcon.png; sourceTree = "<group>"; };
 		88B46EC11C97F09E0074EE4F /* ImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCropViewController.h; sourceTree = "<group>"; };
 		88B46EC21C97F09E0074EE4F /* ImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCropViewController.m; sourceTree = "<group>"; };
 		88B46EC81C994E0E0074EE4F /* EmailCheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailCheckViewController.h; sourceTree = "<group>"; };
@@ -251,8 +255,8 @@
 		69F26DCB1C95C0B8002DA87A /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				889CD03E1C97E62500664F83 /* userImage.jpg */,
-				889CD03C1C97BFBD00664F83 /* headerImage.jpeg */,
+				88A205AE1C9AA5D9009EEFB6 /* DefaultUserBackground.png */,
+				88A205AF1C9AA5D9009EEFB6 /* DefaultUserIcon.png */,
 				69F26DCC1C95C0B8002DA87A /* ProximaNova-Light.otf */,
 				889CD0231C969BA800664F83 /* ProximaNova-Semibold.otf */,
 				889CD02A1C96AC3800664F83 /* bgImage_blur.jpg */,
@@ -390,6 +394,7 @@
 				88DE00F51C929CF6003AADF7 /* Assets.xcassets */,
 				88DE00F71C929CF6003AADF7 /* LaunchScreen.storyboard */,
 				88DE00FA1C929CF6003AADF7 /* Info.plist */,
+				88A205A41C9A8DFB009EEFB6 /* PullToRefreshDemo-Bridging-Header.h */,
 				88DE00E91C929CF6003AADF7 /* Supporting Files */,
 			);
 			path = OnlyNote;
@@ -485,6 +490,8 @@
 		88DE01211C929EA1003AADF7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				88A205AB1C9A9A60009EEFB6 /* NoteTabelModel.h */,
+				88A205AC1C9A9A60009EEFB6 /* NoteTabelModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -690,10 +697,10 @@
 				88DE00F61C929CF6003AADF7 /* Assets.xcassets in Resources */,
 				69F26DEC1C95C0D1002DA87A /* Info.plist in Resources */,
 				88DE00F41C929CF6003AADF7 /* Main.storyboard in Resources */,
+				88A205B11C9AA5D9009EEFB6 /* DefaultUserIcon.png in Resources */,
 				889CD02B1C96AC3800664F83 /* bgImage_blur.jpg in Resources */,
+				88A205B01C9AA5D9009EEFB6 /* DefaultUserBackground.png in Resources */,
 				889CD02F1C979B3B00664F83 /* signupBg.JPG in Resources */,
-				889CD03D1C97BFBD00664F83 /* headerImage.jpeg in Resources */,
-				889CD03F1C97E62500664F83 /* userImage.jpg in Resources */,
 				889CD0241C969BA800664F83 /* ProximaNova-Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,6 +800,7 @@
 				69F26E1F1C95C173002DA87A /* SDImageCache.m in Sources */,
 				88DE012A1C929EF3003AADF7 /* HomeViewController.m in Sources */,
 				69F26E281C95C173002DA87A /* UIImage+MultiFormat.m in Sources */,
+				88A205AD1C9A9A60009EEFB6 /* NoteTabelModel.m in Sources */,
 				69F26E231C95C173002DA87A /* SDWebImageDownloaderOperation.m in Sources */,
 				69F26DF91C95C0EC002DA87A /* LoginFieldView.m in Sources */,
 				69F26E2A1C95C173002DA87A /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -962,6 +970,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.rany.app.OnlyNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OnlyNote/PullToRefreshDemo-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -976,6 +985,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.rany.app.OnlyNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OnlyNote/PullToRefreshDemo-Bridging-Header.h";
 			};
 			name = Release;
 		};

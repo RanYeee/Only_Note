@@ -13,6 +13,9 @@
 #import "CreateNewViewController.h"
 #import "StickCollectionViewFlowLayout.h"
 #import "LoginViewController.h"
+#import "RNNavigationController.h"
+#import <MJRefresh.h>
+#import "NoteTabelModel.h"
 
 static const CGFloat kCellSizeCoef = .8f;
 static const CGFloat kFirstItemTransform = 0.1f;
@@ -53,6 +56,11 @@ static const CGFloat kFirstItemTransform = 0.1f;
     stickLayout.firstItemTransform = kFirstItemTransform;
     
     self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:0.263 green:0.310 blue:0.365 alpha:1.000];
+    
+    //刷新控件
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadDate)];
+    
+    [self.collectionView.mj_header beginRefreshing];
 }
 
 #pragma mark 设置nav
@@ -68,18 +76,61 @@ static const CGFloat kFirstItemTransform = 0.1f;
 
 - (void)pushToCreateVC
 {
-//    CreateNewViewController *createVC = [[CreateNewViewController alloc]init];
-//    
-//    createVC.hidesBottomBarWhenPushed = YES;
-//    
-//    [self.navigationController pushViewController:createVC animated:YES];
+
     
-    LoginViewController *loginVC = [[LoginViewController alloc]init];
+    BmobUser *user = [BmobUser getCurrentUser];
     
-    [self presentViewController:loginVC animated:YES completion:nil];
+    if (user) {
+    
+        CreateNewViewController *createVC = [[CreateNewViewController alloc]init];
+    
+        createVC.hidesBottomBarWhenPushed = YES;
+    
+        [self.navigationController pushViewController:createVC animated:YES];
+        
+    }else{
+        //无用户登录
+        
+        LoginViewController *loginVC = [[LoginViewController alloc]init];
+        
+        RNNavigationController *nav = [[RNNavigationController alloc]initWithRootViewController:loginVC];
+        
+        nav.navigationBar.hidden = YES;
+        
+        [self presentViewController:nav animated:YES completion:nil];
+        
+    }
+
 }
 
-#pragma 列表为空的背景——delegate/datesource
+#pragma mark 加载数据/刷新列表
+
+- (void)loadDate
+{
+    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"NoteTable"];
+    //查找GameScore表的数据
+    
+    bquery.cachePolicy = kBmobCachePolicyNetworkElseCache;
+    
+    [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+        for (BmobObject *obj in array) {
+            //打印playerName
+            
+            [self.dateArray addObject:[NoteTabelModel configWithBmobObject:obj]];
+            
+            [self.collectionView.mj_header endRefreshing];
+            
+            [self.collectionView reloadData];
+        }
+    }];
+}
+
+- (void)refresh
+{
+    
+}
+
+#pragma mark 列表为空的背景——delegate/datesource
 
 -(UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
@@ -129,7 +180,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.colorsArray.count;
+    return self.dateArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -140,6 +191,12 @@ static const CGFloat kFirstItemTransform = 0.1f;
 //    NSString *hexString =self.colorsArray[indexPath.row];
 //    UIColor *color = [UIColor colorFromHexString:hexString];
 //    cell.bgView.backgroundColor = color;
+    
+    NoteTabelModel *model = self.dateArray[indexPath.row];
+    
+    cell.titleLabel.text = model.title;
+    
+    cell.detailTitleLabel.text = model.note_content;
     
     return cell;
 }

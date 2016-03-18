@@ -25,7 +25,7 @@ NSString *const kHideKeyboardNotification = @"kHideKeyboardNotification";//ÈöêËó
         
         self.frame = frame;
         
-        self.endEditingBlock = block;
+        _endEditingBlock = block;
         
         self.iconImage = image;
         
@@ -95,9 +95,13 @@ NSString *const kHideKeyboardNotification = @"kHideKeyboardNotification";//ÈöêËó
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (self.endEditingBlock) {
+    if (_endEditingBlock) {
         
-        _endEditingBlock(textField.text);
+        if (textField.text) {
+            
+            _endEditingBlock(textField.text);
+
+        }
     }
 }
 

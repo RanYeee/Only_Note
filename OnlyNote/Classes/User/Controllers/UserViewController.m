@@ -10,6 +10,7 @@
 #import "UserHeaderView.h"
 #import "ImageCropViewController.h"
 #import "RNNavigationController.h"
+#import "UIImageView+WebCache.h"
 
 @interface UserViewController ()<UserHeaderDelegate,
                                  UIImagePickerControllerDelegate,
@@ -27,8 +28,12 @@
     self.title = @"me";
     
     CGRect headRect = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_WIDTH*9/16);
+    
 
-    _headerView = [[UserHeaderView alloc]initWithFrame:headRect andUserImage:[UIImage imageNamed:@"userImage.jpg"] andUserName:@"AnRan" andBgImage:[UIImage imageNamed:@"headerImage.jpeg"]];
+    _headerView = [[UserHeaderView alloc]initWithFrame:headRect
+                                          andUserImage:[UIImage imageNamed:@"DefaultUserIcon.png"]
+                                           andUserName:@"Rany"
+                                            andBgImage:[UIImage imageNamed:@"DefaultUserBackground.png"]];
     
     [self.view addSubview:_headerView];
     
@@ -76,6 +81,31 @@
     [_headerView resetBgImage:bgImage];
     
     [_headerView resetIconImage:iconImage];
+    
+    
+    NSData *bgData = UIImagePNGRepresentation(bgImage);
+    
+    NSData *iconData = UIImagePNGRepresentation(iconImage);
+    
+    NSDictionary *bgDic = @{@"filename":@"bgImage",
+                               @"data":bgData};
+    
+    NSDictionary *iconDic = @{@"filename":@"iconImage",
+                              @"data":iconData};
+    
+    NSArray *uploadArr = @[bgDic,iconDic];
+    
+    NSLog(@">>>>>>%@",uploadArr);
+    
+    [BmobFile filesUploadBatchWithDataArray:uploadArr progressBlock:^(int index, float progress) {
+        
+        [SVProgressHUD showProgress:progress status:@"Uploading"];
+        
+    } resultBlock:^(NSArray *array, BOOL isSuccessful, NSError *error) {
+        
+        NSLog(@"upload block>>>>>> %@",error);
+        
+    }];
     
 }
 //返回

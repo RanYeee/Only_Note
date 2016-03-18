@@ -83,7 +83,6 @@
     
     LoginFieldView *accountField = [[LoginFieldView alloc]initWithFrame: fieldRect andLeftImage:[UIImage imageNamed:@"icon_viewer"] insertString:^(NSString *insertString) {
         
-        NSLog(@">>>>>>%@",insertString);
         
         _userName = insertString;
         
@@ -142,6 +141,8 @@
     
     
     DeformationButton *loginBtn = [[DeformationButton alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width/1.5, 40)];
+    
+    [loginBtn addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     
     [loginBtn setTitle:@"login" forState:UIControlStateNormal];
         
@@ -207,9 +208,42 @@
 }
 
 #pragma mark 登录处理
-- (void)login
+- (void)login:(DeformationButton *)button
 {
+    if (!button.isLoading) {
+        
+        [SVProgressHUD dismiss];
+        
+        return;
+        
+    }else{
     
+        [SVProgressHUD show];
+        //登录
+        [BmobUser loginWithUsernameInBackground:_userName
+                                       password:_pwd
+                                          block:^(BmobUser *user, NSError *error) {
+                                              
+                                              if (user) {
+                                                  //跳转验证页面
+                                                  
+                                                  [SVProgressHUD showSuccessWithStatus:@"Login Success"];
+                                                  
+                                                  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                      
+                                                      [self dismissViewControllerAnimated:YES completion:nil];
+
+                                                      
+                                                  });
+                                                  
+                                              }else{
+                                                  
+                                                  [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+                                              }
+                                              
+                                          }];
+    }
+
 }
 
 #pragma mark 调到注册页面
@@ -217,11 +251,9 @@
 {
     SignUpViewController *signVC = [[SignUpViewController alloc]init];
     
-    RNNavigationController *nav = [[RNNavigationController alloc]initWithRootViewController:signVC];
     
-    nav.navigationBar.hidden = YES;
+    [self.navigationController pushViewController:signVC animated:YES];
     
-    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)hideKeyboard

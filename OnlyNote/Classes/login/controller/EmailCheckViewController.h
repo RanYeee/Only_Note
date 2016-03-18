@@ -10,4 +10,10 @@
 
 @interface EmailCheckViewController : UIViewController
 
+-(instancetype)initWithEmail:(NSString *)email andUser:(BmobUser *)user;
+
+@property (nonatomic ,strong) NSString *email;
+
+@property (nonatomic ,strong) BmobUser *user;
+
 @end

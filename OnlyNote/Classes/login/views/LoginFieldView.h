@@ -14,13 +14,16 @@ typedef void(^EndEditingBlock)(NSString *insertString);
 
 @interface LoginFieldView : UIView
 
+{
+    EndEditingBlock _endEditingBlock;
+}
+
 @property (nonatomic, strong) UIImage *iconImage;
 
 @property (nonatomic ,strong) NSString *placeHolder;
 
 @property (nonatomic ,strong) UITextField *textfield;
 
-@property (nonatomic ,weak) EndEditingBlock endEditingBlock;
 
 - (instancetype)initWithFrame:(CGRect)frame andLeftImage:(UIImage *)image insertString:(EndEditingBlock)block;
 
