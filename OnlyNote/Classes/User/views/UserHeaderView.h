@@ -16,18 +16,14 @@
 
 @interface UserHeaderView : UIView
 
-@property (nonatomic ,strong) UIImage *userImage;
 
-@property (nonatomic ,strong) UIImage *bgImage;
 
 @property (nonatomic ,strong) NSString *userName;
 
 @property (nonatomic ,weak) id <UserHeaderDelegate> delegate;
 
 -(instancetype)initWithFrame:(CGRect)frame
-                andUserImage:(UIImage *)userImage
-                 andUserName:(NSString *)userName
-                  andBgImage:(UIImage *)bgImage;
+                 andUserName:(NSString *)userName;
 
 -(void)resetBgImage:(UIImage *)image;
 

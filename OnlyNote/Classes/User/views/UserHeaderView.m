@@ -8,6 +8,10 @@
 
 #import "UserHeaderView.h"
 #import "UIImage+Addition.h"
+#import "SDImageCache.h"
+#import "SDWebImageManager.h"
+#import "LoginViewController.h"
+#import "RNNavigationController.h"
 
 @interface UserHeaderView ()
 
@@ -17,22 +21,29 @@
 
 @property (nonatomic, strong) UILabel *userLabel;
 
+@property (nonatomic ,strong) UIImage *userImage;
+
+@property (nonatomic ,strong) UIImage *bgImage;
+
+
+
 @end
 
 @implementation UserHeaderView
 
 -(instancetype)initWithFrame:(CGRect)frame
-                andUserImage:(UIImage *)userImage
                  andUserName:(NSString *)userName
-                  andBgImage:(UIImage *)bgImage;
 {
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.userImage = userImage;
-        self.bgImage = bgImage;
+
         self.userName = userName;
-        [self setupview];
+        [self isSetUserImageComplete:^{
+            
+             [self setupview];
+        }];
+       
     }
     
     return self;
@@ -42,6 +53,7 @@
 {
     //背景图
     _bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    
     
     UIImage *bgImage = [self.bgImage applyBlurWithRadius:5 tintColor:[UIColor clearColor] saturationDeltaFactor:1.0 maskImage:nil];
     
@@ -184,5 +196,103 @@
     _iconImageV.image = image;
 }
 
+- (void)isSetUserImageComplete:(void(^)())complete
+{
+    BmobUser *user = [BmobUser getCurrentUser];
+    
+    if (user) {
+        
+        NSString *userImage = [user objectForKey:@"userImage"];
+        
+        NSString *bg_cacheKey = [[NSUserDefaults standardUserDefaults]objectForKey:kUserBgImageCacheKey];
+        
+        NSString *icon_cacheKey = [[NSUserDefaults standardUserDefaults]objectForKey:kUserIconImageCacheKey];
+        
+        if (userImage && ![userImage isEqualToString:@""]) {
+            
+            if (bg_cacheKey) {
+                //有缓存
+                self.bgImage = [[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:bg_cacheKey];
+                
+                self.userImage = [[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:icon_cacheKey];
+                
+                complete();
+                
+            }else{
+                
+                //无缓存,进行缓存操作
+                
+                [SVProgressHUD show];
+                
+                NSArray *imageUrlArr = [userImage componentsSeparatedByString:@";"];
+                
+                SDWebImageManager *manager = [SDWebImageManager sharedManager];
+                
+                __weak __typeof(&*self)weakSelf = self;
+                
+                    [manager downloadImageWithURL:[NSURL URLWithString:imageUrlArr[0]]
+                                          options:SDWebImageContinueInBackground
+                                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                             
+                                             
+                                         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                             
+                                             weakSelf.bgImage = image;
+                                             
+                                             [manager downloadImageWithURL:[NSURL URLWithString:imageUrlArr[1]]
+                                                                   options:SDWebImageContinueInBackground
+                                                                  progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                                      
+                                                                      
+                                                                  } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                                      
+                                                                      weakSelf.userImage = image;
+                                                                      
+                                                                      
+                                                                      complete();
+                                                                      
+                                                                  }];
 
+                                             
+                                         }];
+                    
+                
+                    
+                
+                [SVProgressHUD dismiss];
+                
+                
+            }
+            
+           
+            
+
+        }else{
+            
+            //用户无设置头像和背景
+            
+            self.bgImage = [UIImage imageNamed:@"DefaultUserBackground.png"];
+            
+            self.userImage = [UIImage imageNamed:@"DefaultUserIcon.png"];
+            
+            complete();
+            
+        }
+        
+        
+        
+        
+    }else{
+        
+        //登录过期
+      
+        self.bgImage = [UIImage imageNamed:@"DefaultUserBackground.png"];
+        
+        self.userImage = [UIImage imageNamed:@"DefaultUserIcon.png"];
+        
+        complete();
+        
+    }
+
+}
 @end

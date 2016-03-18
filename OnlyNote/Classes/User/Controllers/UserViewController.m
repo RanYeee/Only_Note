@@ -36,44 +36,18 @@
     
     CGRect headRect = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_WIDTH*9/16);
     
-    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
     
-    NSString *bg_url = [userDef objectForKey:kUserBgImageCacheKey];
-    
-    NSString *icon_url = [userDef objectForKey:kUserIconImageCacheKey];
-    
-
-    
-    if (!bg_url) {
-        
-        _bg_Image = [UIImage imageNamed:@"DefaultUserBackground.png"];
-        
-        _icon_Image = [UIImage imageNamed:@"DefaultUserIcon.png"];
-        
-    }else{
-        
-        _bg_Image = [[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:bg_url];
-        
-        _icon_Image = [[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:icon_url];
-
-    }
-
-    _headerView = [[UserHeaderView alloc]initWithFrame:headRect
-                                          andUserImage:_icon_Image
-                                           andUserName:@"Rany"
-                                            andBgImage:_bg_Image];
+    _headerView = [[UserHeaderView alloc]initWithFrame:headRect andUserName:[BmobUser getCurrentUser].username];
     
     [self.view addSubview:_headerView];
     
     _headerView.delegate = self;
     
+
+    
   
 }
 
-- (void)isSetUserImage:(void(^)())complete
-{
-    
-}
 
 #pragma mark - 点击事件
 -(void)didClickUserIconImage

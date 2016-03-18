@@ -125,6 +125,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
             [self.collectionView reloadData];
         }
     }];
+    
 }
 
 - (void)refresh
