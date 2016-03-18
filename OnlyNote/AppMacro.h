@@ -25,3 +25,8 @@
 
 //按比例获取字体大小 以iphone5屏幕为基准
 #define  WGiveFontSize(SIZE) SIZE * [UIScreen mainScreen].bounds.size.width/320.0
+
+
+#define kUserBgImageCacheKey @"kUserBgImageCacheKey"  //用户背景缓存名
+
+#define kUserIconImageCacheKey @"kUserIconImageCacheKey"  //用户头像缓存名

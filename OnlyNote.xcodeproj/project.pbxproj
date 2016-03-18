@@ -50,6 +50,7 @@
 		88A205AD1C9A9A60009EEFB6 /* NoteTabelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A205AC1C9A9A60009EEFB6 /* NoteTabelModel.m */; };
 		88A205B01C9AA5D9009EEFB6 /* DefaultUserBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A205AE1C9AA5D9009EEFB6 /* DefaultUserBackground.png */; };
 		88A205B11C9AA5D9009EEFB6 /* DefaultUserIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A205AF1C9AA5D9009EEFB6 /* DefaultUserIcon.png */; };
+		88A205B51C9BE136009EEFB6 /* BmobHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A205B41C9BE136009EEFB6 /* BmobHelp.m */; };
 		88B46EC31C97F09E0074EE4F /* ImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B46EC21C97F09E0074EE4F /* ImageCropViewController.m */; };
 		88B46ECA1C994E0E0074EE4F /* EmailCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B46EC91C994E0E0074EE4F /* EmailCheckViewController.m */; };
 		88DE00EB1C929CF6003AADF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE00EA1C929CF6003AADF7 /* main.m */; };
@@ -174,6 +175,8 @@
 		88A205AC1C9A9A60009EEFB6 /* NoteTabelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTabelModel.m; sourceTree = "<group>"; };
 		88A205AE1C9AA5D9009EEFB6 /* DefaultUserBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultUserBackground.png; sourceTree = "<group>"; };
 		88A205AF1C9AA5D9009EEFB6 /* DefaultUserIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultUserIcon.png; sourceTree = "<group>"; };
+		88A205B31C9BE136009EEFB6 /* BmobHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BmobHelp.h; sourceTree = "<group>"; };
+		88A205B41C9BE136009EEFB6 /* BmobHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BmobHelp.m; sourceTree = "<group>"; };
 		88B46EC11C97F09E0074EE4F /* ImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCropViewController.h; sourceTree = "<group>"; };
 		88B46EC21C97F09E0074EE4F /* ImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCropViewController.m; sourceTree = "<group>"; };
 		88B46EC81C994E0E0074EE4F /* EmailCheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailCheckViewController.h; sourceTree = "<group>"; };
@@ -358,6 +361,15 @@
 			path = views;
 			sourceTree = "<group>";
 		};
+		88A205B21C9BE127009EEFB6 /* helps */ = {
+			isa = PBXGroup;
+			children = (
+				88A205B31C9BE136009EEFB6 /* BmobHelp.h */,
+				88A205B41C9BE136009EEFB6 /* BmobHelp.m */,
+			);
+			path = helps;
+			sourceTree = "<group>";
+		};
 		88DE00DD1C929CF6003AADF7 = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +395,7 @@
 		88DE00E81C929CF6003AADF7 /* OnlyNote */ = {
 			isa = PBXGroup;
 			children = (
+				88A205B21C9BE127009EEFB6 /* helps */,
 				88DE011C1C929EA1003AADF7 /* Categories */,
 				88DE011D1C929EA1003AADF7 /* Classes */,
 				88DE01261C929EA1003AADF7 /* Frameworks */,
@@ -820,6 +833,7 @@
 				889CD0211C9667FA00664F83 /* DeformationButton.m in Sources */,
 				88DE01391C929F68003AADF7 /* RNNavigationController.m in Sources */,
 				69F26E251C95C173002DA87A /* SDWebImagePrefetcher.m in Sources */,
+				88A205B51C9BE136009EEFB6 /* BmobHelp.m in Sources */,
 				69F26E1D1C95C173002DA87A /* MKAnnotationView+WebCache.m in Sources */,
 				69F26E271C95C173002DA87A /* UIImage+GIF.m in Sources */,
 				69F26DEE1C95C0D1002DA87A /* MASConstraint.m in Sources */,

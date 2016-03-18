@@ -16,6 +16,7 @@
 #import "RNNavigationController.h"
 #import <MJRefresh.h>
 #import "NoteTabelModel.h"
+#import "BmobHelp.h"
 
 static const CGFloat kCellSizeCoef = .8f;
 static const CGFloat kFirstItemTransform = 0.1f;
@@ -61,6 +62,8 @@ static const CGFloat kFirstItemTransform = 0.1f;
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadDate)];
     
     [self.collectionView.mj_header beginRefreshing];
+
+    
 }
 
 #pragma mark 设置nav
@@ -76,7 +79,6 @@ static const CGFloat kFirstItemTransform = 0.1f;
 
 - (void)pushToCreateVC
 {
-
     
     BmobUser *user = [BmobUser getCurrentUser];
     
@@ -127,6 +129,8 @@ static const CGFloat kFirstItemTransform = 0.1f;
 
 - (void)refresh
 {
+
+    
     
 }
 
