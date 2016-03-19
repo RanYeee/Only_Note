@@ -204,23 +204,8 @@
         
         NSString *userImage = [user objectForKey:@"userImage"];
         
-        NSString *bg_cacheKey = [[NSUserDefaults standardUserDefaults]objectForKey:kUserBgImageCacheKey];
-        
-        NSString *icon_cacheKey = [[NSUserDefaults standardUserDefaults]objectForKey:kUserIconImageCacheKey];
-        
         if (userImage && ![userImage isEqualToString:@""]) {
             
-            if (bg_cacheKey) {
-                //有缓存
-                self.bgImage = [[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:bg_cacheKey];
-                
-                self.userImage = [[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:icon_cacheKey];
-                
-                complete();
-                
-            }else{
-                
-                //无缓存,进行缓存操作
                 
                 [SVProgressHUD show];
                 
@@ -260,10 +245,6 @@
                     
                 
                 [SVProgressHUD dismiss];
-                
-                
-            }
-            
            
             
 
@@ -294,5 +275,16 @@
         
     }
 
+}
+
+//重置
+- (void)resetAllImage
+{
+    [self removeFromSuperview];
+    
+    [self isSetUserImageComplete:^{
+        
+        [self setupview];
+    }];
 }
 @end

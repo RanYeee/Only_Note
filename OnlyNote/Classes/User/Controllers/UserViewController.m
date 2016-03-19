@@ -108,22 +108,7 @@
             BmobFile *file_bgImage = array[0];
             
             BmobFile *file_iconImage = array[1];
-            
-            SDWebImageManager *manager = [SDWebImageManager sharedManager];
-            
-            [manager saveImageToCache:bgImage forURL:[NSURL URLWithString:file_bgImage.url]];
-            
-            [manager saveImageToCache:iconImage forURL:[NSURL URLWithString:file_iconImage.url]];
-            
-            //存CacheKey
-            NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-            
-            [userDef setObject:file_bgImage.url forKey:kUserBgImageCacheKey];
-            
-            [userDef setObject:file_iconImage.url forKey:kUserIconImageCacheKey];
-            
-            [userDef synchronize];
-            
+
             //url存到bmob
             
             NSString *userImage = [NSString stringWithFormat:@"%@;%@",file_bgImage.url,file_iconImage.url];
@@ -137,6 +122,8 @@
                 
                 //显示裁剪后的图片
                 if (isSuccessful) {
+                    
+//                    [_headerView resetAllImage];
                     
                     [_headerView resetBgImage:bgImage];
                     

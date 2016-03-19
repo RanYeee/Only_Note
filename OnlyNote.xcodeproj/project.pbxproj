@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29A8E2961C9D923200D06A93 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A8E2951C9D923200D06A93 /* UserModel.m */; };
 		69F26DCD1C95C0B8002DA87A /* ProximaNova-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69F26DCC1C95C0B8002DA87A /* ProximaNova-Light.otf */; };
 		69F26DEC1C95C0D1002DA87A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69F26DD01C95C0D1002DA87A /* Info.plist */; };
 		69F26DED1C95C0D1002DA87A /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F26DD21C95C0D1002DA87A /* MASCompositeConstraint.m */; };
@@ -92,6 +93,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29A8E2941C9D923200D06A93 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		29A8E2951C9D923200D06A93 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		69F26DCC1C95C0B8002DA87A /* ProximaNova-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light.otf"; sourceTree = "<group>"; };
 		69F26DD01C95C0D1002DA87A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69F26DD11C95C0D1002DA87A /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
@@ -247,6 +250,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29A8E2931C9D921C00D06A93 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				29A8E2941C9D923200D06A93 /* UserModel.h */,
+				29A8E2951C9D923200D06A93 /* UserModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		35524CA987A5BB05FC150599 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,6 +567,7 @@
 		88DE01481C92C3AD003AADF7 /* login */ = {
 			isa = PBXGroup;
 			children = (
+				29A8E2931C9D921C00D06A93 /* model */,
 				88DE014D1C92C473003AADF7 /* views */,
 				88DE01491C92C3AD003AADF7 /* controller */,
 			);
@@ -792,6 +805,7 @@
 				889CD0371C97BA5D00664F83 /* UserHeaderView.m in Sources */,
 				88DE013C1C92A0D5003AADF7 /* UserViewController.m in Sources */,
 				69F26E261C95C173002DA87A /* UIButton+WebCache.m in Sources */,
+				29A8E2961C9D923200D06A93 /* UserModel.m in Sources */,
 				69F26E241C95C173002DA87A /* SDWebImageManager.m in Sources */,
 				88DE00EE1C929CF6003AADF7 /* AppDelegate.m in Sources */,
 				69F26DF41C95C0D1002DA87A /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,

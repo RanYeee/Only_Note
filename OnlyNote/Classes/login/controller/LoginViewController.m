@@ -12,6 +12,7 @@
 #import "DeformationButton.h"
 #import "SignUpViewController.h"
 #import "RNNavigationController.h"
+#import "UserModel.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -226,6 +227,10 @@
                                               
                                               if (user) {
                                                   //跳转验证页面
+                                                  
+//                                                  UserModel *userModel = [UserModel configWithBombUser:user];
+                                                  
+                                                  
                                                   
                                                   [SVProgressHUD showSuccessWithStatus:@"Login Success"];
                                                   
