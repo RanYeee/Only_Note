@@ -55,7 +55,7 @@
     _bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     
     
-    UIImage *bgImage = [self.bgImage applyBlurWithRadius:5 tintColor:[UIColor clearColor] saturationDeltaFactor:1.0 maskImage:nil];
+    UIImage *bgImage = [self.bgImage applyBlurWithRadius:2 tintColor:[UIColor clearColor] saturationDeltaFactor:1.0 maskImage:nil];
     
 //    [[UIImage alloc]applyBlurWithRadius:5 tintColor:self.tintColor saturationDeltaFactor:1.8 maskImage:nil];
     
@@ -66,7 +66,7 @@
     [self addSubview:_bgImageView];
     
     //圆形头像
-    CGFloat iconH = self.frame.size.width/4;
+    CGFloat iconH = self.frame.size.width/3.5;
     
     _iconImageV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, iconH, iconH)];
     
@@ -86,7 +86,7 @@
 //
     _iconImageV.image = self.userImage;
     
-    _iconImageV.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2-10);
+    _iconImageV.center = CGPointMake(self.frame.size.width/2, self.frame.size.height);
     
     [self addSubview:_iconImageV];
     
@@ -100,11 +100,11 @@
     
     _userLabel.text = self.userName;
     
-    _userLabel.textColor = [UIColor whiteColor];
+    _userLabel.textColor = [UIColor blackColor];
     
     _userLabel.textAlignment = NSTextAlignmentCenter;
     
-    _userLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:WGiveFontSize(18)];
+    _userLabel.font = [UIFont fontWithName:@"ProximaNova-Semibold" size:WGiveFontSize(23)];
     
     [self addSubview:_userLabel];
     
@@ -112,7 +112,7 @@
        
         make.size.mas_equalTo(CGSizeMake(self.frame.size.width,35));
         make.centerX.equalTo(self.mas_centerX);
-        make.top.equalTo(_iconImageV.mas_bottom).offset(15);
+        make.top.equalTo(_iconImageV.mas_bottom).offset(10);
         
     }];
     
@@ -183,7 +183,7 @@
 
 -(void)resetBgImage:(UIImage *)image
 {
-    UIImage *resetImage = [image applyBlurWithRadius:5.0 tintColor:[UIColor clearColor] saturationDeltaFactor:1.0 maskImage:nil];
+    UIImage *resetImage = [image applyBlurWithRadius:2.0 tintColor:[UIColor clearColor] saturationDeltaFactor:1.0 maskImage:nil];
     
     _bgImageView.image = resetImage;
 
@@ -206,9 +206,6 @@
         
         if (userImage && ![userImage isEqualToString:@""]) {
             
-                
-                [SVProgressHUD show];
-                
                 NSArray *imageUrlArr = [userImage componentsSeparatedByString:@";"];
                 
                 SDWebImageManager *manager = [SDWebImageManager sharedManager];
@@ -243,9 +240,7 @@
                     
                 
                     
-                
-                [SVProgressHUD dismiss];
-           
+            
             
 
         }else{
@@ -277,14 +272,5 @@
 
 }
 
-//重置
-- (void)resetAllImage
-{
-    [self removeFromSuperview];
-    
-    [self isSetUserImageComplete:^{
-        
-        [self setupview];
-    }];
-}
+
 @end

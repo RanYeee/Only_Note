@@ -5,7 +5,7 @@
 //  Created by IMac on 16/3/15.
 //  Copyright © 2016年 IMac. All rights reserved.
 //
-#define CropImageHeight SCREEN_WIDTH/16*9
+#define CropImageHeight SCREEN_WIDTH *0.9
 #define BlackViewHeight (SCREEN_HEIGHT/2-CropImageHeight/2)
 
 #import "ImageCropViewController.h"

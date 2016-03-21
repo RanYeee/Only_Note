@@ -10,4 +10,7 @@
 
 @interface LoginViewController : UIViewController
 
+@property (assign) BOOL isRelogin;
+
+
 @end

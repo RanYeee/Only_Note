@@ -13,6 +13,9 @@
 #import "SignUpViewController.h"
 #import "RNNavigationController.h"
 #import "UserModel.h"
+#import "SDWebImageManager.h"
+#import "MainTabbarController.h"
+#import "HomeViewController.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -121,7 +124,7 @@
         make.top.equalTo(accountField.mas_bottom).offset(20);
         
     }];
-    
+/*
     UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
     UIImage *closeImage = [UIImage imageNamed:@"barbuttonicon_back"];
@@ -139,7 +142,7 @@
         make.size.mas_equalTo(CGSizeMake(15, 30));
         
     }];
-    
+*/    
     
     DeformationButton *loginBtn = [[DeformationButton alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width/1.5, 40)];
     
@@ -227,19 +230,34 @@
                                               
                                               if (user) {
                                                   //跳转验证页面
+                                                  UserModel *userModel = [UserModel configWithBombUser:user];
                                                   
-//                                                  UserModel *userModel = [UserModel configWithBombUser:user];
-                                                  
-                                                  
-                                                  
-                                                  [SVProgressHUD showSuccessWithStatus:@"Login Success"];
-                                                  
-                                                  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                  [userModel downloadUserImageComplete:^{
                                                       
-                                                      [self dismissViewControllerAnimated:YES completion:nil];
-
+                                                      [SVProgressHUD showSuccessWithStatus:@"Login Success"];
                                                       
-                                                  });
+                                                      if (self.isRelogin) {
+                                                          
+                                                          [self dismissViewControllerAnimated:YES completion:nil];
+                                                          
+                                                      }else{
+                                                          
+                                                          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                              
+                                                              UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                                              
+                                                              MainTabbarController *main = [storyBoard instantiateViewControllerWithIdentifier:@"MainTabBarID"];
+                                                              
+                                                              [self presentViewController:main animated:NO completion:nil];
+                                                              
+                                                          });
+                                                          
+                                                          
+                                                      }
+                                                      
+                                                      
+                                                  }];
+                         
                                                   
                                               }else{
                                                   
@@ -250,6 +268,7 @@
     }
 
 }
+
 
 #pragma mark 调到注册页面
 - (void)signUp

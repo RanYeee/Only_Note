@@ -14,6 +14,8 @@
 #import "SDWebImageManager.h"
 #import "SDImageCache.h"
 #import "BmobHelp.h"
+#import "UIImage+Addition.h"
+#import "LoginViewController.h"
 
 @interface UserViewController ()<UserHeaderDelegate,
                                  UIImagePickerControllerDelegate,
@@ -34,7 +36,7 @@
     [super viewDidLoad];
     self.title = @"me";
     
-    CGRect headRect = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_WIDTH*9/16);
+    CGRect headRect = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.9);
     
     
     _headerView = [[UserHeaderView alloc]initWithFrame:headRect andUserName:[BmobUser getCurrentUser].username];
@@ -44,10 +46,38 @@
     _headerView.delegate = self;
     
 
+    UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
+    [logoutBtn addTarget:self action:@selector(logoutClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    [logoutBtn setTintColor:[UIColor whiteColor]];
+    
+    [logoutBtn setBackgroundImage:[UIImage createImageWithColor:[UIColor colorWithRed:0.9871 green:0.2182 blue:0.2662 alpha:0.918523015202703]] forState:UIControlStateNormal];
+    
+    [logoutBtn setBackgroundImage:[UIImage createImageWithColor:[UIColor colorWithRed:0.9922 green:0.3137 blue:0.3294 alpha:1.0]] forState:UIControlStateHighlighted];
+    
+    [logoutBtn setTitle:@"logout" forState:UIControlStateNormal];
+    
+    logoutBtn.titleLabel.font = [UIFont fontWithName:@"ProximaNova-Semibold" size:WGiveFontSize(20)];;
+    
+    [self.view addSubview:logoutBtn];
+    
+    [logoutBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, WGiveHeight(40)));
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.view.mas_bottom).offset(-self.tabBarController.tabBar.frame.size.height);
+        
+    }];
   
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+}
 
 #pragma mark - 点击事件
 -(void)didClickUserIconImage
@@ -58,6 +88,25 @@
     picker.delegate = self;
     picker.allowsEditing = NO;
     [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)logoutClick
+{
+    //退出登录
+    [BmobUser logout];
+    
+    [[SDImageCache sharedImageCache]clearDiskOnCompletion:^{
+        
+        //回到登录界面
+        
+        LoginViewController *loginVC = [[LoginViewController alloc]init];
+        
+        loginVC.isRelogin = YES;
+        
+        [self presentViewController:loginVC animated:YES completion:nil];
+        
+    }];
+
 }
 
 #pragma mark - 相册回调
@@ -83,7 +132,6 @@
 //确定
 -(void)confirmClickWithBgImage:(UIImage *)bgImage andIconImage:(UIImage *)iconImage{
     
-    [self dismissViewControllerAnimated:YES completion:nil];
     
     NSData *bgData = UIImagePNGRepresentation(bgImage);
     
@@ -108,6 +156,12 @@
             BmobFile *file_bgImage = array[0];
             
             BmobFile *file_iconImage = array[1];
+            
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            
+            [manager saveImageToCache:bgImage forURL:[NSURL URLWithString:file_bgImage.url]];
+            
+            [manager saveImageToCache:iconImage forURL:[NSURL URLWithString:file_iconImage.url]];
 
             //url存到bmob
             
@@ -123,8 +177,9 @@
                 //显示裁剪后的图片
                 if (isSuccessful) {
                     
-//                    [_headerView resetAllImage];
                     
+                    [self dismissViewControllerAnimated:YES completion:nil];
+
                     [_headerView resetBgImage:bgImage];
                     
                     [_headerView resetIconImage:iconImage];

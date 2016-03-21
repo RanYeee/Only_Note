@@ -39,6 +39,7 @@
 		69F26E2C1C95C173002DA87A /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F26E1C1C95C173002DA87A /* UIView+WebCacheOperation.m */; };
 		69F26E2E1C95C2D6002DA87A /* snowGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 69F26E2D1C95C2D6002DA87A /* snowGif.gif */; };
 		69F26E2F1C95C33E002DA87A /* ProximaNova-Light.otf in Sources */ = {isa = PBXBuildFile; fileRef = 69F26DCC1C95C0B8002DA87A /* ProximaNova-Light.otf */; };
+		885075221C9FD04E00FD1B9A /* MainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 885075211C9FD04E00FD1B9A /* MainTabbarController.m */; };
 		889CD0211C9667FA00664F83 /* DeformationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0201C9667FA00664F83 /* DeformationButton.m */; };
 		889CD0241C969BA800664F83 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 889CD0231C969BA800664F83 /* ProximaNova-Semibold.otf */; };
 		889CD0271C96A31500664F83 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0261C96A31500664F83 /* SignUpViewController.m */; };
@@ -160,6 +161,8 @@
 		69F26E1C1C95C173002DA87A /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		69F26E2D1C95C2D6002DA87A /* snowGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = snowGif.gif; sourceTree = "<group>"; };
 		7628CAA3F5C9732D6BAEC015 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		885075201C9FD04E00FD1B9A /* MainTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabbarController.h; sourceTree = "<group>"; };
+		885075211C9FD04E00FD1B9A /* MainTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabbarController.m; sourceTree = "<group>"; };
 		889CD01F1C9667FA00664F83 /* DeformationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeformationButton.h; sourceTree = "<group>"; };
 		889CD0201C9667FA00664F83 /* DeformationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeformationButton.m; sourceTree = "<group>"; };
 		889CD0221C968B2500664F83 /* AppMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMacro.h; sourceTree = "<group>"; };
@@ -173,7 +176,6 @@
 		889CD0311C979CEB00664F83 /* UIImage+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Addition.m"; sourceTree = "<group>"; };
 		889CD0351C97BA5D00664F83 /* UserHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHeaderView.h; sourceTree = "<group>"; };
 		889CD0361C97BA5D00664F83 /* UserHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeaderView.m; sourceTree = "<group>"; };
-		88A205A41C9A8DFB009EEFB6 /* PullToRefreshDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PullToRefreshDemo-Bridging-Header.h"; path = "ThirdPartyLib/BreakOutToRefresh/PullToRefreshDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		88A205AB1C9A9A60009EEFB6 /* NoteTabelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTabelModel.h; sourceTree = "<group>"; };
 		88A205AC1C9A9A60009EEFB6 /* NoteTabelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTabelModel.m; sourceTree = "<group>"; };
 		88A205AE1C9AA5D9009EEFB6 /* DefaultUserBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultUserBackground.png; sourceTree = "<group>"; };
@@ -419,7 +421,6 @@
 				88DE00F51C929CF6003AADF7 /* Assets.xcassets */,
 				88DE00F71C929CF6003AADF7 /* LaunchScreen.storyboard */,
 				88DE00FA1C929CF6003AADF7 /* Info.plist */,
-				88A205A41C9A8DFB009EEFB6 /* PullToRefreshDemo-Bridging-Header.h */,
 				88DE00E91C929CF6003AADF7 /* Supporting Files */,
 			);
 			path = OnlyNote;
@@ -508,6 +509,8 @@
 				88DE012C1C929F0D003AADF7 /* DetailViewController.m */,
 				88DE012E1C929F3A003AADF7 /* CreateNewViewController.h */,
 				88DE012F1C929F3A003AADF7 /* CreateNewViewController.m */,
+				885075201C9FD04E00FD1B9A /* MainTabbarController.h */,
+				885075211C9FD04E00FD1B9A /* MainTabbarController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				88DE012D1C929F0D003AADF7 /* DetailViewController.m in Sources */,
 				889CD0211C9667FA00664F83 /* DeformationButton.m in Sources */,
 				88DE01391C929F68003AADF7 /* RNNavigationController.m in Sources */,
+				885075221C9FD04E00FD1B9A /* MainTabbarController.m in Sources */,
 				69F26E251C95C173002DA87A /* SDWebImagePrefetcher.m in Sources */,
 				88A205B51C9BE136009EEFB6 /* BmobHelp.m in Sources */,
 				69F26E1D1C95C173002DA87A /* MKAnnotationView+WebCache.m in Sources */,

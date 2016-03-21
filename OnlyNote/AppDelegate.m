@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "MainTabbarController.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +22,27 @@
     [Bmob registerWithAppKey:@"a8fae748496362a9069f536d084750d6"];
 
     [self changeNav];
+    
+    BmobUser *user = [BmobUser getCurrentUser];
+    
+    if (!user) {
+        
+        LoginViewController *loginVC = [[LoginViewController alloc]init];
+        
+        self.window.rootViewController = loginVC;
+        
+        [self.window makeKeyAndVisible];
+        
+    }else{
+//
+        
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        
+        self.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"MainTabBarID"];
+        
+        [self.window makeKeyAndVisible];
+        
+    }
     
     return YES;
     

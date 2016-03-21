@@ -7,6 +7,7 @@
 //
 
 #import "UserModel.h"
+#import "SDWebImageManager.h"
 
 @implementation UserModel
 
@@ -32,5 +33,42 @@
     
     return model;
 }
+
+- (void)downloadUserImageComplete:(void(^)())complete
+{
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    
+    if ([manager diskImageExistsForURL:[NSURL URLWithString:self.bgImage_url]]) {
+        
+        return;
+        
+    }else{
+    
+        [manager downloadImageWithURL:[NSURL URLWithString:self.bgImage_url]
+                              options:SDWebImageContinueInBackground
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 
+                                 
+                             } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                 
+                                 [manager downloadImageWithURL:[NSURL URLWithString:self.iconImage_url]
+                                                       options:SDWebImageContinueInBackground
+                                                      progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                          
+                                                          
+                                                      } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                          
+                                                          
+                                                          complete();
+                                                          
+                                                      }];
+                                 
+                                 
+                             }];
+        
+    }
+    
+}
+
 
 @end

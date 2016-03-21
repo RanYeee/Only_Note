@@ -29,7 +29,6 @@
 
 -(void)resetIconImage:(UIImage *)image;
 
-- (void)resetAllImage;
 
 
 @end

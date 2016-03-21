@@ -28,7 +28,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (strong, nonatomic) NSMutableArray *dateArray;
+@property (strong, nonatomic) NSMutableArray *dataArray;
 
 @property (strong, nonatomic) NSArray *colorsArray;
 
@@ -42,11 +42,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
     
     self.title = @"Home";
     
-    self.collectionView.emptyDataSetSource = self;
-    
-    self.collectionView.emptyDataSetDelegate = self;
-    
-    self.dateArray = [NSMutableArray array];
+    self.dataArray = [NSMutableArray array];
     
     self.colorsArray = @[@"EE5464", @"DC4352", @"FD6D50", @"EA583F", @"F6BC43", @"8DC253", @"4FC2E9", @"3CAFDB", @"5D9CEE", @"4B89DD", @"AD93EE", @"977BDD", @"EE87C0", @"D971AE", @"903FB1", @"9D56B9", @"227FBD", @"2E97DE"];
     
@@ -59,11 +55,20 @@ static const CGFloat kFirstItemTransform = 0.1f;
     self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:0.263 green:0.310 blue:0.365 alpha:1.000];
     
     //刷新控件
-    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadDate)];
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
     
-    [self.collectionView.mj_header beginRefreshing];
+    
+    [self loadDateComplete:^{
+        
+            
+        self.collectionView.emptyDataSetSource = self;
+        
+        self.collectionView.emptyDataSetDelegate = self;
+    
+        [self.collectionView reloadData];
 
-    
+
+    }];
 }
 
 #pragma mark 设置nav
@@ -107,31 +112,62 @@ static const CGFloat kFirstItemTransform = 0.1f;
 
 #pragma mark 加载数据/刷新列表
 
-- (void)loadDate
+- (void)loadDateComplete:(void(^)())complete
 {
+    [SVProgressHUD show];
+    
     BmobQuery   *bquery = [BmobQuery queryWithClassName:@"NoteTable"];
     //查找GameScore表的数据
     
-    bquery.cachePolicy = kBmobCachePolicyNetworkElseCache;
+//    bquery.cachePolicy = kBmobCachePolicyNetworkElseCache;
+    
+    [bquery orderByDescending:@"updatedAt"];
     
     [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+       
         for (BmobObject *obj in array) {
-            //打印playerName
             
-            [self.dateArray addObject:[NoteTabelModel configWithBmobObject:obj]];
+            [self.dataArray addObject:[NoteTabelModel configWithBmobObject:obj]];
             
-            [self.collectionView.mj_header endRefreshing];
-            
-            [self.collectionView reloadData];
         }
+        
+        complete();
+        
+        [SVProgressHUD dismiss];
+
     }];
-    
+
 }
 
 - (void)refresh
 {
 
-    
+    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"NoteTable"];
+    //查找GameScore表的数据
+    [bquery orderByDescending:@"updatedAt"];
+
+    [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+        
+        if (array.count > self.dataArray.count) {
+            
+            [self.dataArray removeAllObjects];
+            
+            for (BmobObject *obj in array) {
+                
+                [self.dataArray addObject:[NoteTabelModel configWithBmobObject:obj]];
+                
+                [self.collectionView reloadData];
+                
+                [self.collectionView.mj_header endRefreshing];
+                
+            }
+            
+        }else{
+            
+            [self.collectionView.mj_header endRefreshing];
+        }
+    }];
+
     
 }
 
@@ -185,7 +221,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.dateArray.count;
+    return self.dataArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -197,7 +233,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
 //    UIColor *color = [UIColor colorFromHexString:hexString];
 //    cell.bgView.backgroundColor = color;
     
-    NoteTabelModel *model = self.dateArray[indexPath.row];
+    NoteTabelModel *model = self.dataArray[indexPath.row];
     
     cell.titleLabel.text = model.title;
     

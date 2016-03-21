@@ -20,6 +20,6 @@
 
 +(instancetype)configWithBombUser:(BmobUser *)user;
 
-
+- (void)downloadUserImageComplete:(void(^)())complete;
 
 @end
