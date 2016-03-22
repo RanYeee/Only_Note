@@ -19,3 +19,4 @@
 #import <BmobSDK/Bmob.h>
 #import "AppMacro.h"
 #import "SVProgressHUD.h"
+#import "KLNotificationHelp.h"

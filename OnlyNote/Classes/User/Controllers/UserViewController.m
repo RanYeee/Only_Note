@@ -77,6 +77,16 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.hidden = YES;
+    
+    [KLNotificationHelp addObserver:self
+                           selector:@selector(reloadHeadView)
+                               name:kLoginSuccessNotification
+                             object:nil];
+}
+
+-(void)reloadHeadView
+{
+    [_headerView reloadView];
 }
 
 #pragma mark - 点击事件
@@ -101,11 +111,17 @@
         
         LoginViewController *loginVC = [[LoginViewController alloc]init];
         
+        RNNavigationController *nav = [[RNNavigationController alloc]initWithRootViewController:loginVC];
+        
+        nav.navigationBar.hidden = YES;
+        
         loginVC.isRelogin = YES;
         
-        [self presentViewController:loginVC animated:YES completion:nil];
+        [self presentViewController:nav animated:YES completion:nil];
         
     }];
+    
+
 
 }
 
@@ -132,15 +148,16 @@
 //确定
 -(void)confirmClickWithBgImage:(UIImage *)bgImage andIconImage:(UIImage *)iconImage{
     
+    BmobUser *bmobUser = [BmobUser getCurrentUser];
     
     NSData *bgData = UIImagePNGRepresentation(bgImage);
     
     NSData *iconData = UIImagePNGRepresentation(iconImage);
     
-    NSDictionary *bgDic = @{@"filename":@"bgImage.png",
+    NSDictionary *bgDic = @{@"filename": [NSString stringWithFormat:@"%@_bgImage.png",bmobUser.username],
                                @"data":bgData};
-    
-    NSDictionary *iconDic = @{@"filename":@"iconImage.png",
+   
+    NSDictionary *iconDic = @{@"filename":[NSString stringWithFormat:@"%@_iconImage.png",bmobUser.username],
                               @"data":iconData};
     
     NSArray *uploadArr = @[bgDic,iconDic];
@@ -167,7 +184,7 @@
             
             NSString *userImage = [NSString stringWithFormat:@"%@;%@",file_bgImage.url,file_iconImage.url];
             
-            BmobUser *bmobUser = [BmobUser getCurrentUser];
+           
           
             [bmobUser setObject:userImage forKey:@"userImage"];
             
@@ -213,8 +230,10 @@
 }
 
 
-//更新数据到bmob
 
-
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:kLoginSuccessNotification];
+}
 
 @end

@@ -29,6 +29,6 @@
 
 -(void)resetIconImage:(UIImage *)image;
 
-
+-(void)reloadView;
 
 @end

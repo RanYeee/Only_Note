@@ -7,6 +7,7 @@
 //
 
 #import "BmobHelp.h"
+#import "UserModel.h"
 
 @implementation BmobHelp
 
@@ -73,6 +74,25 @@
     }];
 }
 
+- (void)deleteUserImageInBackgroundSuccess:(DeleteSuccessBlock)success
+{
+    BmobUser *user = [BmobUser getCurrentUser];
+    
+    UserModel *model = [UserModel configWithBombUser:user];
+    
+    NSArray *urlArr = @[model.bgImage_url,model.iconImage_url];
+    
+    [urlArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        
+        BmobFile *file = [[BmobFile alloc]init];
+        
+        file.url = obj;
+        
+        [file deleteInBackground];
+        
+    }];
 
+}
 
 @end

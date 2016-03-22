@@ -51,6 +51,8 @@
 
 }
 
+
+
 #pragma mark - <UIGestureRecognizerDelegate>
 /**
  * 每当用户触发[返回手势]时都会调用一次这个方法

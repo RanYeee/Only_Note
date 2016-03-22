@@ -10,7 +10,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "MyCollectionViewCell.h"
 #import "UIColor+Hex.h"
-#import "CreateNewViewController.h"
+#import "EditViewController.h"
 #import "StickCollectionViewFlowLayout.h"
 #import "LoginViewController.h"
 #import "RNNavigationController.h"
@@ -88,12 +88,12 @@ static const CGFloat kFirstItemTransform = 0.1f;
     BmobUser *user = [BmobUser getCurrentUser];
     
     if (user) {
-    
-        CreateNewViewController *createVC = [[CreateNewViewController alloc]init];
-    
-        createVC.hidesBottomBarWhenPushed = YES;
-    
-        [self.navigationController pushViewController:createVC animated:YES];
+        
+        EditViewController *createVC = [[EditViewController alloc]init];
+        
+        RNNavigationController *nav = [[RNNavigationController alloc]initWithRootViewController:createVC];
+                
+        [self presentViewController:nav animated:YES completion:nil];
         
     }else{
         //无用户登录

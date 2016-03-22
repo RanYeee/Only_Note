@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "MainTabbarController.h"
+#import "RNNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -29,7 +30,11 @@
         
         LoginViewController *loginVC = [[LoginViewController alloc]init];
         
-        self.window.rootViewController = loginVC;
+        RNNavigationController *nav = [[RNNavigationController alloc]initWithRootViewController:loginVC];
+
+        nav.navigationBar.hidden = YES;
+        
+        self.window.rootViewController = nav;
         
         [self.window makeKeyAndVisible];
         

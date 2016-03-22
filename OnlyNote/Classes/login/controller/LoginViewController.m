@@ -238,6 +238,8 @@
                                                       
                                                       if (self.isRelogin) {
                                                           
+                                                          [KLNotificationHelp postNotificationName:kLoginSuccessNotification object:nil];
+                                                          
                                                           [self dismissViewControllerAnimated:YES completion:nil];
                                                           
                                                       }else{

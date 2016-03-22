@@ -39,9 +39,23 @@
     if (self) {
 
         self.userName = userName;
-        [self isSetUserImageComplete:^{
+        
+        __weak __typeof(&*self)weakSelf = self;
+        
+
+        
+        [self isSetUserImageCompleteWithBgImage:^(UIImage *bgImage) {
             
-             [self setupview];
+            weakSelf.bgImage = bgImage;
+            
+        } IconImage:^(UIImage *iconImage) {
+            
+            weakSelf.userImage = iconImage;
+            
+        } Complete:^{
+            
+            [weakSelf setupview];
+            
         }];
        
     }
@@ -196,7 +210,9 @@
     _iconImageV.image = image;
 }
 
-- (void)isSetUserImageComplete:(void(^)())complete
+- (void)isSetUserImageCompleteWithBgImage:(void (^)(UIImage *bgImage))bgImage
+                                IconImage:(void (^)(UIImage *iconImage))iconImage
+                                 Complete:(void(^)())complete
 {
     BmobUser *user = [BmobUser getCurrentUser];
     
@@ -210,7 +226,7 @@
                 
                 SDWebImageManager *manager = [SDWebImageManager sharedManager];
                 
-                __weak __typeof(&*self)weakSelf = self;
+            
                 
                     [manager downloadImageWithURL:[NSURL URLWithString:imageUrlArr[0]]
                                           options:SDWebImageContinueInBackground
@@ -219,7 +235,7 @@
                                              
                                          } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                                              
-                                             weakSelf.bgImage = image;
+                                             bgImage(image);
                                              
                                              [manager downloadImageWithURL:[NSURL URLWithString:imageUrlArr[1]]
                                                                    options:SDWebImageContinueInBackground
@@ -228,8 +244,8 @@
                                                                       
                                                                   } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                                                                       
-                                                                      weakSelf.userImage = image;
                                                                       
+                                                                      iconImage(image);
                                                                       
                                                                       complete();
                                                                       
@@ -247,9 +263,13 @@
             
             //用户无设置头像和背景
             
-            self.bgImage = [UIImage imageNamed:@"DefaultUserBackground.png"];
+            UIImage *default_bg = [UIImage imageNamed:@"DefaultUserBackground.png"];
             
-            self.userImage = [UIImage imageNamed:@"DefaultUserIcon.png"];
+            UIImage *default_icon = [UIImage imageNamed:@"DefaultUserIcon.png"];
+            
+            bgImage(default_bg);
+            
+            bgImage(default_icon);
             
             complete();
             
@@ -262,14 +282,41 @@
         
         //登录过期
       
-        self.bgImage = [UIImage imageNamed:@"DefaultUserBackground.png"];
+        UIImage *default_bg = [UIImage imageNamed:@"DefaultUserBackground.png"];
         
-        self.userImage = [UIImage imageNamed:@"DefaultUserIcon.png"];
+        UIImage *default_icon = [UIImage imageNamed:@"DefaultUserIcon.png"];
+        
+        bgImage(default_bg);
+        
+        bgImage(default_icon);
         
         complete();
         
     }
 
+}
+
+
+- (void)reloadView
+{
+    __weak __typeof(&*self)weakSelf = self;
+
+
+    [self isSetUserImageCompleteWithBgImage:^(UIImage *bgImage) {
+        
+        UIImage *resetImage = [bgImage applyBlurWithRadius:2.0 tintColor:[UIColor clearColor] saturationDeltaFactor:1.0 maskImage:nil];
+        
+        weakSelf.bgImageView.image = resetImage;
+        
+    } IconImage:^(UIImage *iconImage) {
+        
+        weakSelf.iconImageV.image = iconImage;
+        
+    } Complete:^{
+        
+        weakSelf.userLabel.text = [BmobUser getCurrentUser].username;
+    }];
+    
 }
 
 

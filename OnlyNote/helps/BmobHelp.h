@@ -11,6 +11,8 @@ typedef void(^UpdateSuccessBlock)(); //更新成功
 
 typedef void(^UpdatetFailureBlock)(NSError *error); //更新失败
 
+typedef void(^DeleteSuccessBlock)(); //删除成功
+
 @interface BmobHelp : NSObject
 
 
