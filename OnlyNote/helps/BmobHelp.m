@@ -95,4 +95,69 @@
 
 }
 
+-(void )createNoteTableComplete:(CreateTableSuccessBlock)complete
+{
+    NSString *newTable = [NSString stringWithFormat:@"%@_NoteTable",[BmobUser getCurrentUser].username];
+    
+    NSString *userNoteTable = [[BmobUser getCurrentUser] objectForKey:@"userNoteTable"];
+    
+    if (userNoteTable) {
+        
+        complete(userNoteTable);
+        
+    }else{
+        
+        
+            BmobObject *obj = [BmobObject objectWithClassName:newTable];
+            
+            [obj setObject:@"" forKey:@"title"];
+            
+            [obj setObject:@"" forKey:@"note_content"];
+            
+            [obj setObject:@"" forKey:@"content_image"];
+            
+            [obj setObject:@"" forKey:@"icon_image"];
+
+            [obj saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+                  
+                BmobUser *user = [BmobUser getCurrentUser];
+                  
+                [user setObject:newTable forKey:@"userNoteTable"];
+                  
+                [user updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+                     
+                    if (isSuccessful) {
+                          
+                        complete(newTable);
+
+                    }
+                      
+                  }];
+                
+
+                              
+        }];
+        
+       
+    
+    }
+    
+    
+}
+
+- (void)getTableStruct:(void(^)(NSArray *allKey))complete
+{
+    [Bmob getTableSchemasWithClassName:@"NoteTable" callBack:^(BmobTableSchema *bmobTableSchema, NSError *error) {
+        if (error) {
+            NSLog(@"%@",error);
+        } else {
+            NSLog(@"表名:%@",bmobTableSchema.className);
+            //打印表结构
+            NSDictionary *fields = bmobTableSchema.fields;
+            NSArray *allKey = [fields allKeys];
+            
+            complete(allKey);
+        }
+    }];
+}
 @end

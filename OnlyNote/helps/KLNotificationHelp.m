@@ -10,6 +10,8 @@
 
 NSString *const kLoginSuccessNotification = @"kLoginSuccessNotification";//登录成功
 
+NSString *const kSaveSuccessNotification = @"kSaveSuccessNotification";//保存成功
+
 
 @implementation KLNotificationHelp
 

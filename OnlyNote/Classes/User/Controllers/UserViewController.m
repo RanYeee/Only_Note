@@ -125,6 +125,8 @@
 
 }
 
+
+
 #pragma mark - 相册回调
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {

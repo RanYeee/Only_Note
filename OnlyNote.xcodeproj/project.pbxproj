@@ -67,6 +67,7 @@
 		88A205B01C9AA5D9009EEFB6 /* DefaultUserBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A205AE1C9AA5D9009EEFB6 /* DefaultUserBackground.png */; };
 		88A205B11C9AA5D9009EEFB6 /* DefaultUserIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A205AF1C9AA5D9009EEFB6 /* DefaultUserIcon.png */; };
 		88A205B51C9BE136009EEFB6 /* BmobHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A205B41C9BE136009EEFB6 /* BmobHelp.m */; };
+		88A2AE701CA28A9200E09AE6 /* WZXDateToStrTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2AE6F1CA28A9200E09AE6 /* WZXDateToStrTool.m */; };
 		88B09C371CA13FDD00CF56D8 /* KLNotificationHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B09C361CA13FDD00CF56D8 /* KLNotificationHelp.m */; };
 		88B46EC31C97F09E0074EE4F /* ImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B46EC21C97F09E0074EE4F /* ImageCropViewController.m */; };
 		88B46ECA1C994E0E0074EE4F /* EmailCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B46EC91C994E0E0074EE4F /* EmailCheckViewController.m */; };
@@ -225,6 +226,8 @@
 		88A205AF1C9AA5D9009EEFB6 /* DefaultUserIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultUserIcon.png; sourceTree = "<group>"; };
 		88A205B31C9BE136009EEFB6 /* BmobHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BmobHelp.h; sourceTree = "<group>"; };
 		88A205B41C9BE136009EEFB6 /* BmobHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BmobHelp.m; sourceTree = "<group>"; };
+		88A2AE6E1CA28A9200E09AE6 /* WZXDateToStrTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZXDateToStrTool.h; sourceTree = "<group>"; };
+		88A2AE6F1CA28A9200E09AE6 /* WZXDateToStrTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZXDateToStrTool.m; sourceTree = "<group>"; };
 		88B09C351CA13FDD00CF56D8 /* KLNotificationHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLNotificationHelp.h; sourceTree = "<group>"; };
 		88B09C361CA13FDD00CF56D8 /* KLNotificationHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLNotificationHelp.m; sourceTree = "<group>"; };
 		88B46EC11C97F09E0074EE4F /* ImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCropViewController.h; sourceTree = "<group>"; };
@@ -331,6 +334,7 @@
 		69F26DCE1C95C0D1002DA87A /* ThirdPartyLib */ = {
 			isa = PBXGroup;
 			children = (
+				88A2AE6D1CA28A9200E09AE6 /* DateToStr */,
 				885075321CA1358900FD1B9A /* IQKeyBoardManager */,
 				69F26DFB1C95C173002DA87A /* SDWebImage */,
 				69F26DCF1C95C0D1002DA87A /* Masonry */,
@@ -495,6 +499,15 @@
 				88B09C361CA13FDD00CF56D8 /* KLNotificationHelp.m */,
 			);
 			path = helps;
+			sourceTree = "<group>";
+		};
+		88A2AE6D1CA28A9200E09AE6 /* DateToStr */ = {
+			isa = PBXGroup;
+			children = (
+				88A2AE6E1CA28A9200E09AE6 /* WZXDateToStrTool.h */,
+				88A2AE6F1CA28A9200E09AE6 /* WZXDateToStrTool.m */,
+			);
+			path = DateToStr;
 			sourceTree = "<group>";
 		};
 		88DE00DD1C929CF6003AADF7 = {
@@ -948,6 +961,7 @@
 				69F26E291C95C173002DA87A /* UIImage+WebP.m in Sources */,
 				69F26E1F1C95C173002DA87A /* SDImageCache.m in Sources */,
 				88DE012A1C929EF3003AADF7 /* HomeViewController.m in Sources */,
+				88A2AE701CA28A9200E09AE6 /* WZXDateToStrTool.m in Sources */,
 				8850754E1CA1358900FD1B9A /* IQToolbar.m in Sources */,
 				69F26E281C95C173002DA87A /* UIImage+MultiFormat.m in Sources */,
 				88A205AD1C9A9A60009EEFB6 /* NoteTabelModel.m in Sources */,

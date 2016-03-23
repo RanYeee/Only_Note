@@ -17,6 +17,7 @@
 #import <MJRefresh.h>
 #import "NoteTabelModel.h"
 #import "BmobHelp.h"
+#import "WZXDateToStrTool.h"
 
 static const CGFloat kCellSizeCoef = .8f;
 static const CGFloat kFirstItemTransform = 0.1f;
@@ -71,6 +72,19 @@ static const CGFloat kFirstItemTransform = 0.1f;
     }];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [KLNotificationHelp addObserver:self
+                           selector:@selector(notiRefresh)
+                               name:kSaveSuccessNotification object:nil];
+    
+    [KLNotificationHelp addObserver:self
+                           selector:@selector(notiRefresh)
+                               name:kLoginSuccessNotification object:nil];
+}
+
 #pragma mark 设置nav
 - (void)setNav {
     
@@ -116,58 +130,90 @@ static const CGFloat kFirstItemTransform = 0.1f;
 {
     [SVProgressHUD show];
     
-    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"NoteTable"];
-    //查找GameScore表的数据
+    NSString *tableName = [[BmobUser getCurrentUser]objectForKey:@"userNoteTable"];
     
-//    bquery.cachePolicy = kBmobCachePolicyNetworkElseCache;
-    
-    [bquery orderByDescending:@"updatedAt"];
-    
-    [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
-       
-        for (BmobObject *obj in array) {
-            
-            [self.dataArray addObject:[NoteTabelModel configWithBmobObject:obj]];
-            
-        }
+    if (tableName) {
         
-        complete();
+        BmobQuery   *bquery = [BmobQuery queryWithClassName:tableName];
         
-        [SVProgressHUD dismiss];
-
-    }];
-
-}
-
-- (void)refresh
-{
-
-    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"NoteTable"];
-    //查找GameScore表的数据
-    [bquery orderByDescending:@"updatedAt"];
-
-    [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+        //查找GameScore表的数据
         
-        if (array.count > self.dataArray.count) {
-            
-            [self.dataArray removeAllObjects];
+        //    bquery.cachePolicy = kBmobCachePolicyNetworkElseCache;
+        
+        [bquery orderByDescending:@"updatedAt"];
+        
+        [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
             
             for (BmobObject *obj in array) {
                 
                 [self.dataArray addObject:[NoteTabelModel configWithBmobObject:obj]];
                 
+            }
+            
+            complete();
+            
+            [SVProgressHUD dismiss];
+            
+        }];
+
+    }else{
+        
+        complete();
+        
+        [SVProgressHUD dismiss];
+    }
+    
+   
+}
+
+- (void)refresh
+{
+    NSString *tableName = [[BmobUser getCurrentUser]objectForKey:@"userNoteTable"];
+    
+    
+    
+    if (tableName) {
+        
+        BmobQuery   *bquery = [BmobQuery queryWithClassName:tableName];
+        //查找GameScore表的数据
+        [bquery orderByDescending:@"updatedAt"];
+        
+        [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+            
+            [self.dataArray removeAllObjects];
+            
+            if (array.count>0) {
+                
+                for (BmobObject *obj in array) {
+                    
+                    [self.dataArray addObject:[NoteTabelModel configWithBmobObject:obj]];
+                    
+                }
+                
                 [self.collectionView reloadData];
                 
                 [self.collectionView.mj_header endRefreshing];
-                
+
             }
             
-        }else{
-            
-            [self.collectionView.mj_header endRefreshing];
-        }
-    }];
+        }];
 
+    
+    }else{
+        
+        [self.collectionView.mj_header endRefreshing];
+        
+        [self.collectionView reloadData];
+
+    }
+}
+
+-(void)notiRefresh
+{
+    [self.collectionView.mj_header beginRefreshing];
+    
+    [self refresh];
+    
     
 }
 
@@ -234,10 +280,12 @@ static const CGFloat kFirstItemTransform = 0.1f;
 //    cell.bgView.backgroundColor = color;
     
     NoteTabelModel *model = self.dataArray[indexPath.row];
-    
-    cell.titleLabel.text = model.title;
-    
+        
     cell.detailTitleLabel.text = model.note_content;
+    
+    NSLog(@">>>>>>%@",model.updatedAt);
+    
+    cell.timeLabel.text = [[WZXDateToStrTool tool]timeStrToStrWithTimeStr:model.updatedAt WithStrType:StrType1];
     
     return cell;
 }
@@ -245,6 +293,17 @@ static const CGFloat kFirstItemTransform = 0.1f;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@">>>>>>%ld",(long)indexPath.row);
+    
+    NoteTabelModel *model = _dataArray[indexPath.row];
+    
+    EditViewController *editVC = [[EditViewController alloc]initWithObjectId:model.objId];
+    
+    editVC.isShowDetail = YES;
+    
+    [editVC setHidesBottomBarWhenPushed:YES];
+    
+    [self.navigationController pushViewController:editVC animated:YES];
+    
 }
 
 #pragma mark -=CollectionView layout=-
@@ -256,5 +315,10 @@ static const CGFloat kFirstItemTransform = 0.1f;
     return 0;
 }
 
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:kSaveSuccessNotification];
+}
 
 @end

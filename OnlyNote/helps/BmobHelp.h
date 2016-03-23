@@ -13,6 +13,8 @@ typedef void(^UpdatetFailureBlock)(NSError *error); //更新失败
 
 typedef void(^DeleteSuccessBlock)(); //删除成功
 
+typedef void(^CreateTableSuccessBlock)(NSString *tableName); //创建表成功
+
 @interface BmobHelp : NSObject
 
 
@@ -46,5 +48,13 @@ typedef void(^DeleteSuccessBlock)(); //删除成功
              parameDictionary:(NSDictionary *)parameDic
                       Success:(UpdateSuccessBlock)success
                       Failure:(UpdatetFailureBlock)failure;
+
+
+/**
+ *  创建记事本表
+ *
+ *  @param complete 完成回调表名
+ */
+-(void )createNoteTableComplete:(CreateTableSuccessBlock)complete;
 
 @end

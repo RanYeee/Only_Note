@@ -16,6 +16,7 @@
 #import "SDWebImageManager.h"
 #import "MainTabbarController.h"
 #import "HomeViewController.h"
+#import "BmobHelp.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -229,9 +230,9 @@
                                           block:^(BmobUser *user, NSError *error) {
                                               
                                               if (user) {
-                                                  //跳转验证页面
+
                                                   UserModel *userModel = [UserModel configWithBombUser:user];
-                                                  
+                                                      
                                                   [userModel downloadUserImageComplete:^{
                                                       
                                                       [SVProgressHUD showSuccessWithStatus:@"Login Success"];
@@ -259,7 +260,9 @@
                                                       
                                                       
                                                   }];
-                         
+
+                                            
+                                                  
                                                   
                                               }else{
                                                   

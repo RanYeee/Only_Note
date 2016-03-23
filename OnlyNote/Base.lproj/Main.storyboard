@@ -77,20 +77,6 @@
                                                         <constraint firstItem="ea4-qi-swt" firstAttribute="centerX" secondItem="Kz8-3Z-n6Y" secondAttribute="centerX" id="lmz-3l-OEC"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STRATEGY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbh-4n-33W">
-                                                    <rect key="frame" x="267" y="144" width="66" height="18"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="13"/>
-                                                    <color key="textColor" red="0.79607843140000001" green="0.90980392160000001" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 min - Primer Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gO8-30-eUs">
-                                                    <rect key="frame" x="246" y="227" width="109" height="17"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                                    <color key="textColor" red="0.72549019609999998" green="0.74117647060000003" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yw7-do-0YM" userLabel="FooterView">
                                                     <rect key="frame" x="0.0" y="343" width="600" height="57"/>
                                                     <animations/>
@@ -106,6 +92,13 @@
                                                     <color key="textColor" red="0.2274509804" green="0.27058823529999998" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 min - Primer Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gO8-30-eUs">
+                                                    <rect key="frame" x="242" y="226" width="118" height="18"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -113,17 +106,15 @@
                                         <animations/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="2YG-Gj-fMD" firstAttribute="top" secondItem="Kz8-3Z-n6Y" secondAttribute="bottom" constant="66" id="6az-7Y-ZiE"/>
                                             <constraint firstItem="yw7-do-0YM" firstAttribute="leading" secondItem="Sxd-Bg-coL" secondAttribute="leading" id="7kl-hf-MWf"/>
-                                            <constraint firstItem="gO8-30-eUs" firstAttribute="top" secondItem="2YG-Gj-fMD" secondAttribute="bottom" constant="16" id="Kru-zx-6sN"/>
-                                            <constraint firstItem="sbh-4n-33W" firstAttribute="top" secondItem="Kz8-3Z-n6Y" secondAttribute="bottom" constant="32" id="PVx-Zg-bbw"/>
+                                            <constraint firstItem="gO8-30-eUs" firstAttribute="top" secondItem="2YG-Gj-fMD" secondAttribute="bottom" constant="15" id="Kru-zx-6sN"/>
                                             <constraint firstAttribute="bottom" secondItem="yw7-do-0YM" secondAttribute="bottom" id="YAd-4N-PNh"/>
                                             <constraint firstAttribute="trailing" secondItem="2YG-Gj-fMD" secondAttribute="trailing" constant="16" id="ZXG-c9-Zeh"/>
                                             <constraint firstItem="2YG-Gj-fMD" firstAttribute="leading" secondItem="Sxd-Bg-coL" secondAttribute="leading" constant="16" id="Zt3-Ve-618"/>
                                             <constraint firstItem="Kz8-3Z-n6Y" firstAttribute="top" secondItem="Sxd-Bg-coL" secondAttribute="top" constant="8" id="b4w-HE-pXU"/>
-                                            <constraint firstItem="sbh-4n-33W" firstAttribute="centerX" secondItem="Sxd-Bg-coL" secondAttribute="centerX" id="bv1-ja-7Om"/>
                                             <constraint firstAttribute="trailing" secondItem="yw7-do-0YM" secondAttribute="trailing" id="eWe-k3-NzH"/>
-                                            <constraint firstItem="gO8-30-eUs" firstAttribute="centerX" secondItem="Sxd-Bg-coL" secondAttribute="centerX" id="fB5-M0-9nz"/>
-                                            <constraint firstItem="2YG-Gj-fMD" firstAttribute="top" secondItem="sbh-4n-33W" secondAttribute="bottom" constant="16" id="hNU-42-cR2"/>
+                                            <constraint firstItem="gO8-30-eUs" firstAttribute="centerX" secondItem="Sxd-Bg-coL" secondAttribute="centerX" constant="1" id="fB5-M0-9nz"/>
                                             <constraint firstItem="Kz8-3Z-n6Y" firstAttribute="leading" secondItem="Sxd-Bg-coL" secondAttribute="leading" constant="8" id="med-GB-v0z"/>
                                             <constraint firstAttribute="trailing" secondItem="Kz8-3Z-n6Y" secondAttribute="trailing" constant="8" id="oDn-2K-aU5"/>
                                             <constraint firstItem="2YG-Gj-fMD" firstAttribute="centerX" secondItem="Sxd-Bg-coL" secondAttribute="centerX" id="pjX-1m-EYq"/>
@@ -131,7 +122,7 @@
                                         <size key="customSize" width="600" height="400"/>
                                         <connections>
                                             <outlet property="detailTitleLabel" destination="2YG-Gj-fMD" id="BgB-hM-9p8"/>
-                                            <outlet property="titleLabel" destination="sbh-4n-33W" id="A04-YE-Tx2"/>
+                                            <outlet property="timeLabel" destination="gO8-30-eUs" id="tPT-ok-5Oe"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

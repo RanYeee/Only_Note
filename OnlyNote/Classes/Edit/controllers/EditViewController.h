@@ -10,4 +10,8 @@
 
 @interface EditViewController : UIViewController
 
+@property (nonatomic ,assign) BOOL isShowDetail;
+
+- (instancetype)initWithObjectId:(NSString *)objId;
+
 @end

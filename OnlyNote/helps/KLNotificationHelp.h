@@ -10,6 +10,8 @@
 
 extern NSString *const kLoginSuccessNotification;//登录成功
 
+extern NSString *const kSaveSuccessNotification;//保存成功
+
 
 
 @interface KLNotificationHelp : NSObject

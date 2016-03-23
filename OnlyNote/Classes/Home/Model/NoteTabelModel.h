@@ -10,6 +10,8 @@
 
 @interface NoteTabelModel : NSObject
 
+@property (nonatomic ,copy) NSString *objId;
+
 @property (nonatomic ,copy) NSString *title;
 
 @property (nonatomic ,copy) NSString *note_content;
