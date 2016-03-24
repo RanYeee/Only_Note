@@ -25,7 +25,6 @@ static char kCustomBackButtonKey;
     if (!item) {
         item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:NULL];
         
-    
         
         objc_setAssociatedObject(self, &kCustomBackButtonKey, item, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
@@ -39,6 +38,11 @@ static char kCustomBackButtonKey;
         Method destMethodImp = class_getInstanceMethod(self, @selector(myCustomBackButton_backBarbuttonItem));
         method_exchangeImplementations(originalMethodImp, destMethodImp);
     });
+}
+
+-(void)setTitleViewAlpha:(CGFloat)alpha
+{
+    self.titleView.alpha = alpha;
 }
 
 - (void)dealloc {

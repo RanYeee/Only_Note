@@ -10,5 +10,6 @@
 
 @interface UINavigationItem (CustomBackButton)
 
+-(void)setTitleViewAlpha:(CGFloat)alpha;
 
 @end

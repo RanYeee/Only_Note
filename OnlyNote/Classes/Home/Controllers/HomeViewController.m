@@ -85,6 +85,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
                                name:kLoginSuccessNotification object:nil];
 }
 
+
 #pragma mark 设置nav
 - (void)setNav {
     
@@ -319,6 +320,8 @@ static const CGFloat kFirstItemTransform = 0.1f;
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter]removeObserver:kSaveSuccessNotification];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:kLoginSuccessNotification];
 }
 
 @end

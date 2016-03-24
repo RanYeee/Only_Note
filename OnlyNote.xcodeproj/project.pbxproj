@@ -68,6 +68,7 @@
 		88A205B11C9AA5D9009EEFB6 /* DefaultUserIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A205AF1C9AA5D9009EEFB6 /* DefaultUserIcon.png */; };
 		88A205B51C9BE136009EEFB6 /* BmobHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A205B41C9BE136009EEFB6 /* BmobHelp.m */; };
 		88A2AE701CA28A9200E09AE6 /* WZXDateToStrTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2AE6F1CA28A9200E09AE6 /* WZXDateToStrTool.m */; };
+		88A2AE731CA389E300E09AE6 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2AE721CA389E300E09AE6 /* UINavigationBar+Awesome.m */; };
 		88B09C371CA13FDD00CF56D8 /* KLNotificationHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B09C361CA13FDD00CF56D8 /* KLNotificationHelp.m */; };
 		88B46EC31C97F09E0074EE4F /* ImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B46EC21C97F09E0074EE4F /* ImageCropViewController.m */; };
 		88B46ECA1C994E0E0074EE4F /* EmailCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B46EC91C994E0E0074EE4F /* EmailCheckViewController.m */; };
@@ -228,6 +229,8 @@
 		88A205B41C9BE136009EEFB6 /* BmobHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BmobHelp.m; sourceTree = "<group>"; };
 		88A2AE6E1CA28A9200E09AE6 /* WZXDateToStrTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZXDateToStrTool.h; sourceTree = "<group>"; };
 		88A2AE6F1CA28A9200E09AE6 /* WZXDateToStrTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZXDateToStrTool.m; sourceTree = "<group>"; };
+		88A2AE711CA389E300E09AE6 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		88A2AE721CA389E300E09AE6 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		88B09C351CA13FDD00CF56D8 /* KLNotificationHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLNotificationHelp.h; sourceTree = "<group>"; };
 		88B09C361CA13FDD00CF56D8 /* KLNotificationHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLNotificationHelp.m; sourceTree = "<group>"; };
 		88B46EC11C97F09E0074EE4F /* ImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCropViewController.h; sourceTree = "<group>"; };
@@ -589,6 +592,8 @@
 				88DE013E1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.m */,
 				889CD0301C979CEB00664F83 /* UIImage+Addition.h */,
 				889CD0311C979CEB00664F83 /* UIImage+Addition.m */,
+				88A2AE711CA389E300E09AE6 /* UINavigationBar+Awesome.h */,
+				88A2AE721CA389E300E09AE6 /* UINavigationBar+Awesome.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -949,6 +954,7 @@
 				88DE01351C929F54003AADF7 /* MyCollectionViewCell.m in Sources */,
 				8850754A1CA1358900FD1B9A /* IQKeyboardManager.m in Sources */,
 				8850754C1CA1358900FD1B9A /* IQTextView.m in Sources */,
+				88A2AE731CA389E300E09AE6 /* UINavigationBar+Awesome.m in Sources */,
 				69F26DF51C95C0D1002DA87A /* View+MASAdditions.m in Sources */,
 				88B46EC31C97F09E0074EE4F /* ImageCropViewController.m in Sources */,
 				8850752C1CA0EA1300FD1B9A /* EditToolBar.m in Sources */,
