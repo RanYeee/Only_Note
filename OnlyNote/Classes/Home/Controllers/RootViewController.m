@@ -35,13 +35,15 @@
     [self addSubview];
     
     [self addRecognizer];
+    
+    [KLNotificationHelp addObserver:self selector:@selector(sildeToleft) name:@"sildeToLeft" object:nil];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [KLNotificationHelp addObserver:self selector:@selector(sildeToleft) name:@"sildeToLeft" object:nil];
 }
 
 - (void)sildeToleft
@@ -126,6 +128,10 @@
     CGPoint translation = [recognizer translationInView:[self.view.subviews objectAtIndex:2]];
     // 2. 让当前控件做响应的平移
     [self.view.subviews objectAtIndex:2].transform = CGAffineTransformTranslate([self.view.subviews objectAtIndex:2].transform, translation.x, 0);
+    
+    CGFloat alphaOffset = [self.view.subviews objectAtIndex:2].transform.tx;
+    
+    [self.view.subviews objectAtIndex:1].alpha = 1-((240-alphaOffset)/240) ;
     
     [self.view.subviews objectAtIndex:1].ttx=[self.view.subviews objectAtIndex:2].ttx/3;
     

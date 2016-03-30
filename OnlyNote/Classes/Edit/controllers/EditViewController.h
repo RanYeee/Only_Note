@@ -12,6 +12,6 @@
 
 @property (nonatomic ,assign) BOOL isShowDetail;
 
-- (instancetype)initWithObjectId:(NSString *)objId;
+- (instancetype)initWithObjectId:(NSString *)objId andFloderName:(NSString *)floderName;
 
 @end

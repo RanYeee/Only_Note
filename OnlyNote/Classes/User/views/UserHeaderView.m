@@ -269,7 +269,7 @@
             
             bgImage(default_bg);
             
-            bgImage(default_icon);
+            iconImage(default_icon);
             
             complete();
             

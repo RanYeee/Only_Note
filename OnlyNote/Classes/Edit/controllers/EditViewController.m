@@ -23,6 +23,8 @@
     NSString *_content;
     
     NSString *_objId;
+    
+    NSString *_floderName;
 
 }
 
@@ -32,13 +34,15 @@
 
 @implementation EditViewController
 
--(instancetype)initWithObjectId:(NSString *)objId
+-(instancetype)initWithObjectId:(NSString *)objId andFloderName:(NSString *)floderName
 {
     self = [super init];
     
     if (self) {
         
         _objId = objId;
+        
+        _floderName = floderName;
         
     }
     
@@ -55,8 +59,8 @@
     
     [self setupView];
 
-    
 }
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -141,13 +145,14 @@
     
     [self.scrollView addSubview:_titleField];
     
+    
     _textView = [[UITextView alloc]initWithFrame:CGRectMake(10, _titleField.frame.origin.y+70, SCREEN_WIDTH-20, 200)];
     
     _textView.font = [UIFont fontWithName:@"ProximaNova-Light" size:WGiveFontSize(17)];
 
     _textView.delegate = self;
     
-//    [self.scrollView addSubview:_textView];
+    [self.scrollView addSubview:_textView];
     
     _textView.frame = CGRectMake ( 10 , _titleField.frame.origin.y+70 , SCREEN_WIDTH , _textView.contentSize.height );
 
@@ -171,6 +176,22 @@
     
     [SVProgressHUD show];
     
+    if (self.isShowDetail) {
+        
+
+        [self updateData];
+        
+    }else{
+        
+        [self saveData];
+    }
+
+    
+}
+
+-(void)saveData
+{
+    
     NSString *newTable = [NSString stringWithFormat:@"%@_NoteTable",[BmobUser getCurrentUser].username];
     
     NSString *oldTable = [[BmobUser getCurrentUser]objectForKey:@"userNoteTable"];
@@ -190,31 +211,72 @@
             if (isSuccessful) {
                 
                 [self uploadDataWithClassName:newTable];
-
+                
             }
             
         }];
         
         
     }
+}
 
+- (void)updateData
+{
+    NSString *className = [[BmobUser getCurrentUser]objectForKey:@"userNoteTable"];
+
+    if (_title != nil || _content != nil ) {
+        
+        if (_title == nil) {
+            
+            _title = _titleField.text;
+            
+        }else if (_content == nil){
+            
+            _content = _textView.text;
+        }
+        NSDictionary *parameDic = @{@"title":_title,
+                                    @"note_content":_content,
+                                    @"content_image":@"",
+                                    @"floderName":_floderName,
+                                    @"icon_image":@""};
+        
+        BmobObjectsBatch    *batch = [[BmobObjectsBatch alloc] init] ;
+        
+        [batch updateBmobObjectWithClassName:className objectId:_objId parameters:parameDic];
+        
+        [batch batchObjectsInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+            
+            if (isSuccessful) {
+                
+                [SVProgressHUD dismiss];
+                
+                [KLNotificationHelp postNotificationName:kSaveSuccessNotification object:nil];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }else{
+                
+                [SVProgressHUD showErrorWithStatus:@"save error"];
+            }
+        }];
+
+    }else{
+        
+        [SVProgressHUD dismiss];
+
+        [self.navigationController popViewControllerAnimated:YES];
+
+    }
     
 }
 
 - (void)uploadDataWithClassName:(NSString *)className
 {
+ 
+    
     if (_title == nil || _content == nil || [_title isEqualToString:@""] || [_content isEqualToString:@""]) {
         
         [SVProgressHUD dismiss];
-        
-        if (self.isShowDetail) {
-            
-            [self.navigationController popViewControllerAnimated:YES];
-
-        }else{
-            
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
         
         
     }else{
@@ -222,28 +284,30 @@
         NSDictionary *parameDic = @{@"title":_title,
                                     @"note_content":_content,
                                     @"content_image":@"",
+                                    @"floderName":_floderName,
                                     @"icon_image":@""};
         
         BmobObjectsBatch    *batch = [[BmobObjectsBatch alloc] init] ;
         
         [batch saveBmobObjectWithClassName:className parameters:parameDic];
-        
+
         [batch batchObjectsInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
             
-            [SVProgressHUD dismiss];
-            
-            [KLNotificationHelp postNotificationName:kSaveSuccessNotification object:nil];
-            
-            if (self.isShowDetail) {
+            if (isSuccessful) {
                 
-                [self.navigationController popViewControllerAnimated:YES];
+                [SVProgressHUD dismiss];
                 
+                [KLNotificationHelp postNotificationName:kSaveSuccessNotification object:nil];
+     
+                    
+                [self dismissViewControllerAnimated:YES completion:nil];
+                    
                 
             }else{
-            
-                [self dismissViewControllerAnimated:YES completion:nil];
-            
+                
+                [SVProgressHUD showErrorWithStatus:error.description];
             }
+      
             
         }];
         
@@ -262,14 +326,25 @@
 
 - (void)hideKeyBoard
 {
-    [_titleField resignFirstResponder];
+    if (![_textView resignFirstResponder]) {
+        
+        [_textView resignFirstResponder];
+        
+    }
+    
+    if (![_titleField resignFirstResponder]){
+        
+        [_titleField resignFirstResponder];
+        
+    }
+    
 }
 
 #pragma mark textview 代理
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-
+    [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView

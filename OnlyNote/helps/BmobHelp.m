@@ -57,7 +57,7 @@
                             Failure:(UpdatetFailureBlock)failure
 {
     BmobObjectsBatch    *batch = [[BmobObjectsBatch alloc] init] ;
-    //在GameScore表中创建一条数据
+
     [batch saveBmobObjectWithClassName:tableName parameters:parameDic];
     
     [batch batchObjectsInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {

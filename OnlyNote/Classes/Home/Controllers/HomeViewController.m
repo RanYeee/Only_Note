@@ -40,7 +40,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Home";
+    self.title = @"Diary";
         
     self.dataArray = [NSMutableArray array];
     
@@ -87,7 +87,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
                                name:kLoginSuccessNotification object:nil];
     
     [KLNotificationHelp addObserver:self
-                           selector:@selector(changeToFloder)
+                           selector:@selector(changeToFloder:)
                                name:@"selectOtherFloder" object:nil];
 }
 
@@ -114,7 +114,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
     
     if (user) {
         
-        EditViewController *createVC = [[EditViewController alloc]init];
+        EditViewController *createVC = [[EditViewController alloc]initWithObjectId:@"" andFloderName:self.title];
         
         RNNavigationController *nav = [[RNNavigationController alloc]initWithRootViewController:createVC];
                 
@@ -145,9 +145,14 @@ static const CGFloat kFirstItemTransform = 0.1f;
    
 }
 
-- (void)changeToFloder
+- (void)changeToFloder:(NSNotification *)info
 {
     //跳转到其他文件夹
+    
+    self.title = (NSString *)info.object;
+    
+    [self notiRefresh];
+    
 }
 
 #pragma mark 加载数据/刷新列表
@@ -166,7 +171,9 @@ static const CGFloat kFirstItemTransform = 0.1f;
         
         //    bquery.cachePolicy = kBmobCachePolicyNetworkElseCache;
         
-        [bquery orderByDescending:@"updatedAt"];
+        [bquery orderByDescending:@"updateAt"];
+        
+        [bquery whereKey:@"floderName" equalTo:self.title];
         
         [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
             
@@ -195,19 +202,20 @@ static const CGFloat kFirstItemTransform = 0.1f;
 - (void)refresh
 {
     NSString *tableName = [[BmobUser getCurrentUser]objectForKey:@"userNoteTable"];
-    
-    
-    
+        
     if (tableName) {
         
+
         BmobQuery   *bquery = [BmobQuery queryWithClassName:tableName];
         //查找GameScore表的数据
         [bquery orderByDescending:@"updatedAt"];
         
+        [bquery whereKey:@"floderName" equalTo:self.title];
+        
         [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
             
             [self.dataArray removeAllObjects];
-            
+
             if (array.count>0) {
                 
                 for (BmobObject *obj in array) {
@@ -215,12 +223,12 @@ static const CGFloat kFirstItemTransform = 0.1f;
                     [self.dataArray addObject:[NoteTabelModel configWithBmobObject:obj]];
                     
                 }
-                
-                [self.collectionView reloadData];
-                
-                [self.collectionView.mj_header endRefreshing];
 
             }
+            
+            [self.collectionView reloadData];
+            
+            [self.collectionView.mj_header endRefreshing];
             
         }];
 
@@ -320,7 +328,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
     
     NoteTabelModel *model = _dataArray[indexPath.row];
     
-    EditViewController *editVC = [[EditViewController alloc]initWithObjectId:model.objId];
+    EditViewController *editVC = [[EditViewController alloc]initWithObjectId:model.objId andFloderName:self.title];
     
     editVC.isShowDetail = YES;
     

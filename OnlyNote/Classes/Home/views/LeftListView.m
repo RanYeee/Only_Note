@@ -6,8 +6,16 @@
 //  Copyright © 2016年 IMac. All rights reserved.
 //
 
+#define kDefauleFileNames @[@"Diary",@"Secret",@"Others"]
+
 #import "LeftListView.h"
 #import "LeftViewCell.h"
+
+@interface LeftListView ()
+
+@property (nonatomic,strong) NSMutableArray *fileArray;
+
+@end
 
 @implementation LeftListView
 
@@ -19,6 +27,18 @@
         
         self.fileNameArr = nameArr;
         
+        self.fileArray = [NSMutableArray array];
+        
+        for (NSString *str in kDefauleFileNames) {
+            
+            [self.fileArray addObject:str];
+        }
+        
+        if (nameArr) {
+            
+            [self.fileArray addObjectsFromArray:nameArr];
+            
+        }
         
 //        UIImageView *iconView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"leftview_Folder"]];
 //        
@@ -28,7 +48,7 @@
 //        
 //        [self addSubview:iconView];
         
-        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 120, frame.size.width, frame.size.height-120) style:UITableViewStylePlain];
+        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 120, frame.size.width, frame.size.height-120) style:UITableViewStyleGrouped];
         
         self.tableView.delegate = self;
         
@@ -51,7 +71,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return _fileArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -67,7 +87,7 @@
 
     }
     
-    cell.textLabel.text = @"hfiowheo";
+    cell.textLabel.text = _fileArray[indexPath.row];
     
     return cell;
     
@@ -87,7 +107,7 @@
     
     [KLNotificationHelp postNotificationName:@"sildeToLeft" object:nil];
     
-    [KLNotificationHelp postNotificationName:@"selectOtherFloder" object:nil];
+    [KLNotificationHelp postNotificationName:@"selectOtherFloder" object:_fileArray[indexPath.row]];
     
 }
 
