@@ -48,7 +48,6 @@
     // 禁止使用系统自带的滑动手势
     self.interactivePopGestureRecognizer.enabled = NO;
     
-    
 
 }
 

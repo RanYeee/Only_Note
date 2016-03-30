@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "MainTabbarController.h"
 #import "RNNavigationController.h"
+#import "RootViewController.h"
 
 @interface AppDelegate ()
 
@@ -41,9 +42,13 @@
     }else{
 //
         
-        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//        
+//        self.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"MainTabBarID"];
         
-        self.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"MainTabBarID"];
+        RootViewController *rootVC = [[RootViewController alloc]init];
+        
+        self.window.rootViewController = rootVC;
         
         [self.window makeKeyAndVisible];
         

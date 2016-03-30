@@ -17,6 +17,7 @@
 #import "MainTabbarController.h"
 #import "HomeViewController.h"
 #import "BmobHelp.h"
+#import "RootViewController.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -247,11 +248,13 @@
                                                           
                                                           dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                                                               
-                                                              UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//                                                              UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//                                                              
+//                                                              MainTabbarController *main = [storyBoard instantiateViewControllerWithIdentifier:@"MainTabBarID"];
                                                               
-                                                              MainTabbarController *main = [storyBoard instantiateViewControllerWithIdentifier:@"MainTabBarID"];
+                                                              RootViewController *rootVC = [[RootViewController alloc]init];
                                                               
-                                                              [self presentViewController:main animated:NO completion:nil];
+                                                              [self presentViewController:rootVC animated:NO completion:nil];
                                                               
                                                           });
                                                           

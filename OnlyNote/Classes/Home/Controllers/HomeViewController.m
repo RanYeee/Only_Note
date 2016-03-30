@@ -19,7 +19,7 @@
 #import "BmobHelp.h"
 #import "WZXDateToStrTool.h"
 
-static const CGFloat kCellSizeCoef = .8f;
+static const CGFloat kCellSizeCoef = .24f;
 static const CGFloat kFirstItemTransform = 0.1f;
 
 @interface HomeViewController ()<UICollectionViewDataSource,
@@ -33,7 +33,6 @@ static const CGFloat kFirstItemTransform = 0.1f;
 
 @property (strong, nonatomic) NSArray *colorsArray;
 
-
 @end
 
 @implementation HomeViewController
@@ -42,21 +41,22 @@ static const CGFloat kFirstItemTransform = 0.1f;
     [super viewDidLoad];
     
     self.title = @"Home";
-    
+        
     self.dataArray = [NSMutableArray array];
     
     self.colorsArray = @[@"EE5464", @"DC4352", @"FD6D50", @"EA583F", @"F6BC43", @"8DC253", @"4FC2E9", @"3CAFDB", @"5D9CEE", @"4B89DD", @"AD93EE", @"977BDD", @"EE87C0", @"D971AE", @"903FB1", @"9D56B9", @"227FBD", @"2E97DE"];
     
     [self setNav];
     
-    StickCollectionViewFlowLayout *stickLayout = (StickCollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+//    StickCollectionViewFlowLayout *stickLayout = (StickCollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     
-    stickLayout.firstItemTransform = kFirstItemTransform;
+//    stickLayout.firstItemTransform = kFirstItemTransform;
     
     self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:0.263 green:0.310 blue:0.365 alpha:1.000];
     
     //刷新控件
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
+    
     
     
     [self loadDateComplete:^{
@@ -70,6 +70,8 @@ static const CGFloat kFirstItemTransform = 0.1f;
 
 
     }];
+    
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -83,6 +85,10 @@ static const CGFloat kFirstItemTransform = 0.1f;
     [KLNotificationHelp addObserver:self
                            selector:@selector(notiRefresh)
                                name:kLoginSuccessNotification object:nil];
+    
+    [KLNotificationHelp addObserver:self
+                           selector:@selector(changeToFloder)
+                               name:@"selectOtherFloder" object:nil];
 }
 
 
@@ -94,9 +100,13 @@ static const CGFloat kFirstItemTransform = 0.1f;
     
     self.navigationItem.rightBarButtonItem = addButton;
     
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"iphone_barIcon_home"] style:UIBarButtonItemStylePlain target:self action:@selector(sildeToLeft)];
+    
+    self.navigationItem.leftBarButtonItem = leftButton;
+    
 }
 
-
+#pragma mark 点击事件及通知事件
 - (void)pushToCreateVC
 {
     
@@ -121,8 +131,23 @@ static const CGFloat kFirstItemTransform = 0.1f;
         
         [self presentViewController:nav animated:YES completion:nil];
         
+        
     }
 
+}
+
+
+-(void)sildeToLeft
+{
+    //侧滑
+    
+    [KLNotificationHelp postNotificationName:@"sildeToLeft" object:nil];
+   
+}
+
+- (void)changeToFloder
+{
+    //跳转到其他文件夹
 }
 
 #pragma mark 加载数据/刷新列表
@@ -276,15 +301,14 @@ static const CGFloat kFirstItemTransform = 0.1f;
     static NSString *cellID = @"myCellID";
     
     MyCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
+    
 //    NSString *hexString =self.colorsArray[indexPath.row];
 //    UIColor *color = [UIColor colorFromHexString:hexString];
 //    cell.bgView.backgroundColor = color;
     
     NoteTabelModel *model = self.dataArray[indexPath.row];
         
-    cell.detailTitleLabel.text = model.note_content;
-    
-    NSLog(@">>>>>>%@",model.updatedAt);
+    cell.titleLabel.text = model.title;
     
     cell.timeLabel.text = [[WZXDateToStrTool tool]timeStrToStrWithTimeStr:model.updatedAt WithStrType:StrType1];
     
@@ -293,7 +317,6 @@ static const CGFloat kFirstItemTransform = 0.1f;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@">>>>>>%ld",(long)indexPath.row);
     
     NoteTabelModel *model = _dataArray[indexPath.row];
     
@@ -322,6 +345,7 @@ static const CGFloat kFirstItemTransform = 0.1f;
     [[NSNotificationCenter defaultCenter]removeObserver:kSaveSuccessNotification];
     
     [[NSNotificationCenter defaultCenter]removeObserver:kLoginSuccessNotification];
+    
 }
 
 @end

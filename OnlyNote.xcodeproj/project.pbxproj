@@ -54,6 +54,7 @@
 		885075501CA1358900FD1B9A /* UIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 885075441CA1358900FD1B9A /* UIView+Hierarchy.m */; };
 		885075511CA1358900FD1B9A /* UIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 885075461CA1358900FD1B9A /* UIView+IQKeyboardToolbar.m */; };
 		885075521CA1358900FD1B9A /* UIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 885075481CA1358900FD1B9A /* UIWindow+Hierarchy.m */; };
+		8895F98A1CAA0F2500D8F1D6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8895F9891CAA0F2500D8F1D6 /* RootViewController.m */; };
 		889CD0211C9667FA00664F83 /* DeformationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0201C9667FA00664F83 /* DeformationButton.m */; };
 		889CD0241C969BA800664F83 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 889CD0231C969BA800664F83 /* ProximaNova-Semibold.otf */; };
 		889CD0271C96A31500664F83 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CD0261C96A31500664F83 /* SignUpViewController.m */; };
@@ -80,7 +81,6 @@
 		88DE01041C929CF6003AADF7 /* OnlyNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01031C929CF6003AADF7 /* OnlyNoteTests.m */; };
 		88DE010F1C929CF6003AADF7 /* OnlyNoteUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE010E1C929CF6003AADF7 /* OnlyNoteUITests.m */; };
 		88DE012A1C929EF3003AADF7 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01291C929EF3003AADF7 /* HomeViewController.m */; };
-		88DE012D1C929F0D003AADF7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE012C1C929F0D003AADF7 /* DetailViewController.m */; };
 		88DE01351C929F54003AADF7 /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01321C929F54003AADF7 /* MyCollectionViewCell.m */; };
 		88DE01361C929F54003AADF7 /* StickCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01341C929F54003AADF7 /* StickCollectionViewFlowLayout.m */; };
 		88DE01391C929F68003AADF7 /* RNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01381C929F68003AADF7 /* RNNavigationController.m */; };
@@ -89,6 +89,10 @@
 		88DE01451C92B146003AADF7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE01441C92B146003AADF7 /* UIColor+Hex.m */; };
 		88DE014C1C92C427003AADF7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE014B1C92C427003AADF7 /* LoginViewController.m */; };
 		88DE01501C92C49C003AADF7 /* LoginTextfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE014F1C92C49C003AADF7 /* LoginTextfield.m */; };
+		88E69B1E1CAA746A007EC945 /* LeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E69B1D1CAA746A007EC945 /* LeftViewCell.m */; };
+		88F468671CAA1CE3003000CC /* UIView+SHCZExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F468661CAA1CE3003000CC /* UIView+SHCZExt.m */; };
+		88F468691CAA2144003000CC /* sidebar_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88F468681CAA2144003000CC /* sidebar_bg.jpg */; };
+		88F4686D1CAA2BBF003000CC /* LeftListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F4686C1CAA2BBF003000CC /* LeftListView.m */; };
 		D84CFC5D8C42BABA789EDF9D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 973EE636FA21E1802513AF71 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -208,6 +212,8 @@
 		885075461CA1358900FD1B9A /* UIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		885075471CA1358900FD1B9A /* UIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Hierarchy.h"; sourceTree = "<group>"; };
 		885075481CA1358900FD1B9A /* UIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		8895F9881CAA0F2500D8F1D6 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		8895F9891CAA0F2500D8F1D6 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		889CD01F1C9667FA00664F83 /* DeformationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeformationButton.h; sourceTree = "<group>"; };
 		889CD0201C9667FA00664F83 /* DeformationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeformationButton.m; sourceTree = "<group>"; };
 		889CD0221C968B2500664F83 /* AppMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMacro.h; sourceTree = "<group>"; };
@@ -253,8 +259,6 @@
 		88DE01101C929CF6003AADF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88DE01281C929EF3003AADF7 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		88DE01291C929EF3003AADF7 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		88DE012B1C929F0D003AADF7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		88DE012C1C929F0D003AADF7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		88DE01311C929F54003AADF7 /* MyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewCell.h; sourceTree = "<group>"; };
 		88DE01321C929F54003AADF7 /* MyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewCell.m; sourceTree = "<group>"; };
 		88DE01331C929F54003AADF7 /* StickCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickCollectionViewFlowLayout.h; sourceTree = "<group>"; };
@@ -271,6 +275,13 @@
 		88DE014B1C92C427003AADF7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		88DE014E1C92C49C003AADF7 /* LoginTextfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTextfield.h; sourceTree = "<group>"; };
 		88DE014F1C92C49C003AADF7 /* LoginTextfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTextfield.m; sourceTree = "<group>"; };
+		88E69B1C1CAA746A007EC945 /* LeftViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewCell.h; sourceTree = "<group>"; };
+		88E69B1D1CAA746A007EC945 /* LeftViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCell.m; sourceTree = "<group>"; };
+		88F468651CAA1CE3003000CC /* UIView+SHCZExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SHCZExt.h"; sourceTree = "<group>"; };
+		88F468661CAA1CE3003000CC /* UIView+SHCZExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SHCZExt.m"; sourceTree = "<group>"; };
+		88F468681CAA2144003000CC /* sidebar_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sidebar_bg.jpg; sourceTree = "<group>"; };
+		88F4686B1CAA2BBF003000CC /* LeftListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftListView.h; sourceTree = "<group>"; };
+		88F4686C1CAA2BBF003000CC /* LeftListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftListView.m; sourceTree = "<group>"; };
 		973EE636FA21E1802513AF71 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C70C264AD1B0374144BD9D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -321,6 +332,7 @@
 		69F26DCB1C95C0B8002DA87A /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				88F468681CAA2144003000CC /* sidebar_bg.jpg */,
 				8850752D1CA112B000FD1B9A /* LaunchScreen.png */,
 				88A205AE1C9AA5D9009EEFB6 /* DefaultUserBackground.png */,
 				88A205AF1C9AA5D9009EEFB6 /* DefaultUserIcon.png */,
@@ -594,6 +606,8 @@
 				889CD0311C979CEB00664F83 /* UIImage+Addition.m */,
 				88A2AE711CA389E300E09AE6 /* UINavigationBar+Awesome.h */,
 				88A2AE721CA389E300E09AE6 /* UINavigationBar+Awesome.m */,
+				88F468651CAA1CE3003000CC /* UIView+SHCZExt.h */,
+				88F468661CAA1CE3003000CC /* UIView+SHCZExt.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -612,6 +626,7 @@
 		88DE011E1C929EA1003AADF7 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				88F4686A1CAA2B8D003000CC /* views */,
 				88DE011F1C929EA1003AADF7 /* Cell */,
 				88DE01201C929EA1003AADF7 /* Controllers */,
 				88DE01211C929EA1003AADF7 /* Model */,
@@ -626,6 +641,8 @@
 				88DE01321C929F54003AADF7 /* MyCollectionViewCell.m */,
 				88DE01331C929F54003AADF7 /* StickCollectionViewFlowLayout.h */,
 				88DE01341C929F54003AADF7 /* StickCollectionViewFlowLayout.m */,
+				88E69B1C1CAA746A007EC945 /* LeftViewCell.h */,
+				88E69B1D1CAA746A007EC945 /* LeftViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -637,10 +654,10 @@
 				88DE01381C929F68003AADF7 /* RNNavigationController.m */,
 				88DE01281C929EF3003AADF7 /* HomeViewController.h */,
 				88DE01291C929EF3003AADF7 /* HomeViewController.m */,
-				88DE012B1C929F0D003AADF7 /* DetailViewController.h */,
-				88DE012C1C929F0D003AADF7 /* DetailViewController.m */,
 				885075201C9FD04E00FD1B9A /* MainTabbarController.h */,
 				885075211C9FD04E00FD1B9A /* MainTabbarController.m */,
+				8895F9881CAA0F2500D8F1D6 /* RootViewController.h */,
+				8895F9891CAA0F2500D8F1D6 /* RootViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -729,6 +746,15 @@
 				69F26DF81C95C0EC002DA87A /* LoginFieldView.m */,
 				889CD01F1C9667FA00664F83 /* DeformationButton.h */,
 				889CD0201C9667FA00664F83 /* DeformationButton.m */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		88F4686A1CAA2B8D003000CC /* views */ = {
+			isa = PBXGroup;
+			children = (
+				88F4686B1CAA2BBF003000CC /* LeftListView.h */,
+				88F4686C1CAA2BBF003000CC /* LeftListView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -856,6 +882,7 @@
 				885075491CA1358900FD1B9A /* IQKeyboardManager.bundle in Resources */,
 				88DE00F61C929CF6003AADF7 /* Assets.xcassets in Resources */,
 				69F26DEC1C95C0D1002DA87A /* Info.plist in Resources */,
+				88F468691CAA2144003000CC /* sidebar_bg.jpg in Resources */,
 				8850752E1CA112B000FD1B9A /* LaunchScreen.png in Resources */,
 				88DE00F41C929CF6003AADF7 /* Main.storyboard in Resources */,
 				88A205B11C9AA5D9009EEFB6 /* DefaultUserIcon.png in Resources */,
@@ -955,8 +982,10 @@
 				8850754A1CA1358900FD1B9A /* IQKeyboardManager.m in Sources */,
 				8850754C1CA1358900FD1B9A /* IQTextView.m in Sources */,
 				88A2AE731CA389E300E09AE6 /* UINavigationBar+Awesome.m in Sources */,
+				88F468671CAA1CE3003000CC /* UIView+SHCZExt.m in Sources */,
 				69F26DF51C95C0D1002DA87A /* View+MASAdditions.m in Sources */,
 				88B46EC31C97F09E0074EE4F /* ImageCropViewController.m in Sources */,
+				88F4686D1CAA2BBF003000CC /* LeftListView.m in Sources */,
 				8850752C1CA0EA1300FD1B9A /* EditToolBar.m in Sources */,
 				88DE013F1C92A19D003AADF7 /* UINavigationItem+CustomBackButton.m in Sources */,
 				69F26E2C1C95C173002DA87A /* UIView+WebCacheOperation.m in Sources */,
@@ -982,11 +1011,11 @@
 				69F26E1E1C95C173002DA87A /* NSData+ImageContentType.m in Sources */,
 				69F26DF31C95C0D1002DA87A /* NSArray+MASAdditions.m in Sources */,
 				88DE014C1C92C427003AADF7 /* LoginViewController.m in Sources */,
+				88E69B1E1CAA746A007EC945 /* LeftViewCell.m in Sources */,
 				69F26DF01C95C0D1002DA87A /* MASLayoutConstraint.m in Sources */,
 				69F26E211C95C173002DA87A /* SDWebImageDecoder.m in Sources */,
 				69F26DED1C95C0D1002DA87A /* MASCompositeConstraint.m in Sources */,
 				88DE01451C92B146003AADF7 /* UIColor+Hex.m in Sources */,
-				88DE012D1C929F0D003AADF7 /* DetailViewController.m in Sources */,
 				885075511CA1358900FD1B9A /* UIView+IQKeyboardToolbar.m in Sources */,
 				889CD0211C9667FA00664F83 /* DeformationButton.m in Sources */,
 				8850754B1CA1358900FD1B9A /* IQSegmentedNextPrevious.m in Sources */,
@@ -998,6 +1027,7 @@
 				885075291CA0E89100FD1B9A /* EditViewController.m in Sources */,
 				885075501CA1358900FD1B9A /* UIView+Hierarchy.m in Sources */,
 				69F26E1D1C95C173002DA87A /* MKAnnotationView+WebCache.m in Sources */,
+				8895F98A1CAA0F2500D8F1D6 /* RootViewController.m in Sources */,
 				69F26E271C95C173002DA87A /* UIImage+GIF.m in Sources */,
 				885075311CA11E9300FD1B9A /* TitleTextfield.m in Sources */,
 				69F26DEE1C95C0D1002DA87A /* MASConstraint.m in Sources */,

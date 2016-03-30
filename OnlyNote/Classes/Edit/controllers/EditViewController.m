@@ -65,6 +65,15 @@
     [[IQKeyboardManager sharedManager]setEnable:NO];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController.navigationBar lt_setTitleTranslationY: 0];
+    
+    [self.navigationController.navigationBar lt_setTitleViewAlpha:1];
+}
+
 - (void)loadDetailComplete:(void(^)(BmobObject *object))complete
 {
     [SVProgressHUD show];

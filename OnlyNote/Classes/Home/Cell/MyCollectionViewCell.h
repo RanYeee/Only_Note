@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface MyCollectionViewCell : UICollectionViewCell
-@property (strong, nonatomic) IBOutlet UILabel *detailTitleLabel;
+
 
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
